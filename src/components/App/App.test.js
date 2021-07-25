@@ -1,8 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/hello world/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+    test('renders header', () => {
+        render(<App />);
+
+        const headerComponent = screen.queryByTestId("header");
+        expect(headerComponent).toBeInTheDocument();
+      });
+      
+      test('renders main view', () => {
+          render(<App />);
+
+          const mainView = screen.queryByTestId("main-view");
+          expect(mainView).toBeInTheDocument();
+      });
 });
