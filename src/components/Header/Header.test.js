@@ -2,11 +2,11 @@ import { queryByTestId, render, screen } from '@testing-library/react';
 import Header from './Header';
 
 describe('Header', () => {
-    test('should render icon', () => {
+    test('should render logo', () => {
         render(<Header />);
 
-        const icon = screen.queryByTestId("hd-icon");
-        expect(icon).toBeInTheDocument();
+        const logo = screen.queryByTestId("hd-logo");
+        expect(logo).toBeInTheDocument();
     });
 
     test('should render navigation bar', () => {
@@ -15,6 +15,13 @@ describe('Header', () => {
         const navBar = screen.queryByTestId("hd-nav-var")
         expect(navBar).toBeInTheDocument();
     });
+
+    test('should render search input'){
+        render(<Header/>);
+
+        const searchInput = screen.queryByTestId("hd-search-input");
+        expect(searchInput).toBeInTheDocument();
+    }
 
     test('should render theme toggle', () => {
         render(<Header/>);
