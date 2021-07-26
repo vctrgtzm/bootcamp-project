@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MainView from '/MainView';
+import MainView from './MainView';
 
 describe('MainView', () => {
     test('should render all of the videos contained in mock', () => {
@@ -7,7 +7,7 @@ describe('MainView', () => {
         render(<MainView />);
 
         const renderedVideos = screen.queryAllByTestId("video-container");
-        expect(renderedVideos.length).toBe(mockData.length);
+        expect(renderedVideos).toHaveLength(mockData.items.length);
 
     });
 });
