@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
     *:focus{
         outline: none;
     }
+
+    body {
+        background-color: #E9ECEF;
+    }
 `;
 
 export default GlobalStyle;
