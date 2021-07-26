@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledHeader = styled.header`
     position: fixed;
     background-color: #DEE2E6;
-    height: 60px;
+    height: 70px;
     width: 100%;
     font: bold 28px 'Amatic SC', arial;
     color: #03045E;
