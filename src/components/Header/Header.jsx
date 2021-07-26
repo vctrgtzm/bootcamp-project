@@ -32,7 +32,7 @@ function Header() {
             </HeaderSectionCenter>
             <HeaderSectionRight>
                 <ThemeToggleContainer>
-                    <FontAwesomeIcon icon={faAdjust} size="sm" />
+                    <FontAwesomeIcon data-testid="hd-theme-toggle " icon={faAdjust} size="sm" />
                 </ThemeToggleContainer>
                 <AvatarContainer data-testid="hd-avatar">
                     <FontAwesomeIcon icon={faUser} size="sm" />
