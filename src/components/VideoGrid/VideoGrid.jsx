@@ -4,11 +4,10 @@ import { GridContainer } from "./VideoGrid.styled";
 
 function VideoGrid({ items }) {
     return (
-    <GridContainer data-testid="grid-container">
+    <GridContainer>
         {items.map(item => {
             return (
-                <VideoCard
-                    data-testid="video-card"
+                <VideoCard                  
                     key={item.etag}
                     thumbnail={item.snippet.thumbnails.high.url}
                     title={item.snippet.title}

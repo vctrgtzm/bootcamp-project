@@ -4,7 +4,7 @@ import { VideoItemContainer, ThumbnailContiner } from './VideoCard.styled';
 function VideoCard({ thumbnail, title, description }) {
 
     return (
-        <VideoItemContainer>
+        <VideoItemContainer role="listitem">
             <ThumbnailContiner
                 thumbnail={thumbnail}
             />

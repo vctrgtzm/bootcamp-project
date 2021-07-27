@@ -19,25 +19,25 @@ import logo from '../../logo.png';
 
 function Header() {
     return (
-        <StyledHeader data-testid="header">
+        <StyledHeader role="heading" data-testid="header">
             <HeaderSectionLeft>
-                <Logo data-testid="hd-logo" alt="the icon of the app" src={logo}></Logo>
-                <NavigationItems>
+                <Logo role="img" alt="the icon of the app" src={logo}></Logo>
+                <NavigationItems role="navigation">
                     <NavigationItem>Home</NavigationItem>
                     <NavigationItem>Favorites</NavigationItem>
                 </NavigationItems>
                 <MenuIconContainer>
-                    <FontAwesomeIcon icon={faBars} size="md" />
+                    <FontAwesomeIcon icon={faBars} size="lg" />
                 </MenuIconContainer>
             </HeaderSectionLeft>
             <HeaderSectionCenter>
-                <SearchInput data-testid="hd-search-input" type="text" placeholder="Search..." />
+                <SearchInput role="search" type="text" placeholder="Search..." />
             </HeaderSectionCenter>
             <HeaderSectionRight>
-                <ThemeToggleContainer>
-                    <FontAwesomeIcon data-testid="hd-theme-toggle " icon={faAdjust} size="sm" />
+                <ThemeToggleContainer role="switch">
+                    <FontAwesomeIcon icon={faAdjust} size="sm" />
                 </ThemeToggleContainer>
-                <AvatarContainer data-testid="hd-avatar">
+                <AvatarContainer role="figure">
                     <FontAwesomeIcon icon={faUser} size="sm" />
                 </AvatarContainer>
             </HeaderSectionRight>

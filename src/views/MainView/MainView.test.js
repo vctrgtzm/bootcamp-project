@@ -6,7 +6,7 @@ describe('MainView', () => {
         const mockData = require('../../mocks/youtube-videos-mock.json');
         render(<MainView />);
 
-        const renderedVideos = screen.queryAllByTestId("video-container");
+        const renderedVideos = screen.queryAllByRole("listitem");
         expect(renderedVideos).toHaveLength(mockData.items.length);
 
     });

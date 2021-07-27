@@ -4,7 +4,7 @@ function MainView() {
     const mockData = require('../../mocks/youtube-videos-mock.json');
 
     return (
-        <div data-testid="view">
+        <div role="main">
             <VideoGrid
                 items={mockData.items}
             />
