@@ -9,10 +9,10 @@ describe('App', () => {
         expect(headerComponent).toBeInTheDocument();
       });
       
-      test('should render main view', () => {
+      test('should render a view', () => {
           render(<App />);
 
-          const mainView = screen.queryByTestId("main-view");
-          expect(mainView).toBeInTheDocument();
+          const view = screen.queryByTestId("view");
+          expect(view).toBeInTheDocument();
       });
 });
