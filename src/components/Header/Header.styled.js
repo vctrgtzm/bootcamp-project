@@ -10,6 +10,10 @@ export const StyledHeader = styled.header`
     display: flex;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
     padding: 0 30px;
+
+    @media(max-width: 768px){
+        padding: 0 10px;
+    }
 `;
 
 export const HeaderSection = styled.section`
@@ -25,10 +29,21 @@ export const HeaderSectionLeft = styled(HeaderSection)`
 
 export const HeaderSectionCenter = styled(HeaderSection)`
     justify-content: center;
+    padding: 0 16px;
+
+    @media(max-width: 768px){
+        width: 100%;
+        flex-shrink: .4;
+        /* flex-grow: 2; */
+    }
 `;
 
 export const HeaderSectionRight = styled(HeaderSection)`
     justify-content: flex-end;
+    padding-left: 16px;
+    @media(max-width: 768px){
+        display: none;
+    }
 `;
 
 export const Logo = styled.img`
@@ -41,24 +56,38 @@ export const Logo = styled.img`
     }
 `;
 
-export const NavList = styled.ul`
-    list-style-type: none;
+export const NavigationItems = styled.nav`
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 
-    & > li {
-        float: left;
-        display: block;
-        text-align: center;
-        padding: 16px;
-        text-decoration: none;
+    @media(max-width: 768px){
+        display: none;
     }
+`;
 
-    & > li:hover {
-        background-color: #ced4da;
+export const MenuIconContainer = styled.div`
+    display: none;
+    cursor: pointer;
+    position: relative;
+
+    @media(max-width: 768px){
+        display: block;
+    }
+`;
+
+export const NavigationItem = styled.div`
+    margin: 0 16px;
+
+    &:hover{
+        color: #48cae4;
         cursor: pointer;
     }
 `;
 
-export const SearchInput = styled.input.attrs({type: 'text'})`
+export const SearchInput = styled.input.attrs({ type: 'text' })`
     font: bold 24px 'Amatic SC', arial;
     background-color: transparent;
     border: 1px solid #adb5bd;
@@ -66,10 +95,16 @@ export const SearchInput = styled.input.attrs({type: 'text'})`
     padding: 4px 8px;
     color: #03045E;
     width: 50%;
+    min-width: 200px;
 
     &:focus{
         background-color: #e9ecef;
     }
+
+    @media(max-width: 768px){
+        width: 100%;
+    }
+
 `;
 
 export const AvatarContainer = styled.div`

@@ -1,17 +1,19 @@
 import {
     StyledHeader,
     Logo,
-    NavList,
     HeaderSectionLeft,
     HeaderSectionCenter,
     HeaderSectionRight,
     SearchInput,
     AvatarContainer,
-    ThemeToggleContainer
+    ThemeToggleContainer,
+    NavigationItems,
+    NavigationItem,
+    MenuIconContainer
 } from './Header.styled';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdjust, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faAdjust, faUser, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../logo.png';
 
@@ -20,12 +22,13 @@ function Header() {
         <StyledHeader data-testid="header">
             <HeaderSectionLeft>
                 <Logo data-testid="hd-logo" alt="the icon of the app" src={logo}></Logo>
-                <nav data-testid="hd-nav-var">
-                    <NavList>
-                        <li>Home</li>
-                        <li>Favorites</li>
-                    </NavList>
-                </nav>
+                <NavigationItems>
+                    <NavigationItem>Home</NavigationItem>
+                    <NavigationItem>Favorites</NavigationItem>
+                </NavigationItems>
+                <MenuIconContainer>
+                    <FontAwesomeIcon icon={faBars} size="md" />
+                </MenuIconContainer>
             </HeaderSectionLeft>
             <HeaderSectionCenter>
                 <SearchInput data-testid="hd-search-input" type="text" placeholder="Search..." />
