@@ -41,4 +41,3 @@ background-position: center;
 
 transition: background-size .3s ease-out;
 `;
-
