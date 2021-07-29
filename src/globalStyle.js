@@ -15,6 +15,18 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: #E9ECEF;
     }
+
+    @media(max-width: 768px){
+        .hidden-mobile{
+            display: none;
+        }
+    }
+
+    @media(max-width: 768px){
+        .display-block-mobile{
+            display: block;
+        }
+    }
 `;
 
 export default GlobalStyle;

@@ -40,9 +40,6 @@ export const HeaderSectionCenter = styled(HeaderSection)`
 export const HeaderSectionRight = styled(HeaderSection)`
     justify-content: flex-end;
     padding-left: 16px;
-    @media(max-width: 768px){
-        display: none;
-    }
 `;
 
 export const Logo = styled.img`
@@ -61,20 +58,12 @@ export const NavigationItems = styled.nav`
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-
-    @media(max-width: 768px){
-        display: none;
-    }
 `;
 
 export const MenuIconContainer = styled.div`
     display: none;
     cursor: pointer;
     position: relative;
-
-    @media(max-width: 768px){
-        display: block;
-    }
 `;
 
 export const NavigationItem = styled.div`
