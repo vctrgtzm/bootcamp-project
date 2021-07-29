@@ -68,6 +68,7 @@ export const MenuIconContainer = styled.div`
 
 export const NavigationItem = styled.div`
     margin: 0 16px;
+    transition: color .2s ease-out;
 
     &:hover{
         color: #48cae4;
