@@ -1,8 +1,27 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/hello world/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+    test('should render header', () => {
+        render(<App />);
+
+        const headerComponent = screen.queryByTestId("header");
+        expect(headerComponent).toBeInTheDocument();
+    });
+
+    //TEST NOT WORKING WITH HEADER BY ROLE, TODO: FIND OUT WHY
+
+    test('should render the header', () => {
+        render(<App />);
+
+        const headerComponent = screen.queryByRole("banner");
+        expect(headerComponent).toBeInTheDocument();
+    });
+
+    test('should render a view', () => {
+        render(<App />);
+
+        const view = screen.queryByRole("main");
+        expect(view).toBeInTheDocument();
+    });
 });
