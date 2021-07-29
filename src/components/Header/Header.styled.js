@@ -34,7 +34,6 @@ export const HeaderSectionCenter = styled(HeaderSection)`
     @media(max-width: 768px){
         width: 100%;
         flex-shrink: .4;
-        /* flex-grow: 2; */
     }
 `;
 
