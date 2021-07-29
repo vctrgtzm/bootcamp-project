@@ -11,14 +11,12 @@ describe('App', () => {
 
     //TEST NOT WORKING WITH HEADER BY ROLE, TODO: FIND OUT WHY
 
-    // test('should render the header', () => {
-    //     render(<App />);
+    test('should render the header', () => {
+        render(<App />);
 
-    //     const headerComponent = screen.queryByRole("heading");
-    //     expect(headerComponent).toBeInTheDocument();
-    // });
-
-    test.todo('should render the header: query using role="navigation" check why it does not work' );
+        const headerComponent = screen.queryByRole("banner");
+        expect(headerComponent).toBeInTheDocument();
+    });
 
     test('should render a view', () => {
         render(<App />);

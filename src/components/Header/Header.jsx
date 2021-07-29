@@ -19,7 +19,7 @@ import logo from '../../logo.png';
 
 function Header() {
     return (
-        <StyledHeader role="heading" data-testid="header">
+        <StyledHeader role="banner" data-testid="header">
             <HeaderSectionLeft>
                 <Logo role="img" alt="the icon of the app" src={logo}></Logo>
                 <NavigationItems role="navigation" className="hidden-mobile">
