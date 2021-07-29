@@ -18,6 +18,8 @@ describe('App', () => {
     //     expect(headerComponent).toBeInTheDocument();
     // });
 
+    test.todo('should render the header: query using role="navigation" check why it does not work' );
+
     test('should render a view', () => {
         render(<App />);
 
