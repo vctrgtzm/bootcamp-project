@@ -19,31 +19,33 @@ export const VideoItemContainer = styled.div`
     min-height: 100%;
     min-width: 100%;
 
-    &:hover {
-        background-color: #e9ecef;
-        position: absolute;
-        z-index: 2;
-        min-width: 105%;
-    }
+    @media(min-width: 768px){
+        &:hover {
+            background-color: #e9ecef;
+            position: absolute;
+            z-index: 2;
+            min-width: 105%;
+        }
 
-    &:hover > div {
-        background-size: 120%;
+        &:hover > div {
+            background-size: 120%;
+        }
+
+        /*LoadingIndicator*/
+        &:hover > div:nth-of-type(2n){
+            width: 100%;
+        }
+
+        /*DescriptionContainer*/
+        &:hover > div:nth-of-type(3n){
+            margin: 12px;
+            display: block;
+        }
     }
 
     & > h2{
         margin: 12px;
         letter-spacing: 1px;
-    }
-
-    /*LoadingIndicator*/
-    &:hover > div:nth-of-type(2n){
-        width: 100%;
-    }
-
-    /*DescriptionContainer*/
-    &:hover > div:nth-of-type(3n){
-        margin: 12px;
-        display: block;
     }
 `;
 
