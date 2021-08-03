@@ -1,15 +1,15 @@
-import { VideoItemContainer, ThumbnailContiner, VideoRelativeContiner, DescriptionContainer, LoadingIndicator } from './VideoCard.styled';
+import { VideoItemContainer, ThumbnailContainer, VideoRelativeContiner, DescriptionContainer, LoadingIndicator } from './VideoCard.styled';
 
 
-function VideoCard({ thumbnail, title, description }) {
+function VideoCard({ thumbnail, title, description, videoId, setVideoId }) {
 
     return (
         <VideoRelativeContiner>
-            <VideoItemContainer role="listitem">
-                <ThumbnailContiner
+            <VideoItemContainer role="listitem" onClick={() => setVideoId(videoId)}>
+                <ThumbnailContainer
                     thumbnail={thumbnail}
                 />
-                <LoadingIndicator/>
+                <LoadingIndicator />
                 <h2>{title}</h2>
                 <DescriptionContainer className="display-block-mobile">
                     <p>{description}</p>
