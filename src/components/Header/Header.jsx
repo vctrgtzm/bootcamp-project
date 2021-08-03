@@ -19,7 +19,7 @@ import logo from '../../logo.png';
 import { useState } from 'react';
 
 function Header({ setSearchTerm, setVideoId }) {
-    const [searchVal, setSearchVal] = useState();
+    const [searchVal, setSearchVal] = useState('');
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
