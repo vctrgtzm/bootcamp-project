@@ -16,8 +16,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdjust, faUser, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../logo.png';
+import { useState } from 'react';
 
-function Header() {
+function Header({ setSearchTerm, setVideoId }) {
+    const [searchVal, setSearchVal] = useState();
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setVideoId(null);
+            setSearchTerm(e.target.value);            
+        }
+    }
+
     return (
         <StyledHeader role="banner" data-testid="header">
             <HeaderSectionLeft>
@@ -31,7 +41,14 @@ function Header() {
                 </MenuIconContainer>
             </HeaderSectionLeft>
             <HeaderSectionCenter>
-                <SearchInput role="search" type="text" placeholder="Search..." />
+                <SearchInput
+                    role="search"
+                    type="text"
+                    placeholder="Search..."
+                    value={searchVal}
+                    onChange={e => setSearchVal(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                />
             </HeaderSectionCenter>
             <HeaderSectionRight className="hidden-mobile">
                 <ThemeToggleContainer role="switch">
