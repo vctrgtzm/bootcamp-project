@@ -32,12 +32,12 @@ export const VideoItemContainer = styled.div`
         }
 
         /*LoadingIndicator*/
-        &:hover > div:nth-of-type(2n){
+        &:hover > div:nth-of-type(2){
             width: 100%;
         }
 
         /*DescriptionContainer*/
-        &:hover > div:nth-of-type(3n){
+        &:hover > div:nth-of-type(3){
             margin: 12px;
             display: block;
         }
@@ -49,7 +49,7 @@ export const VideoItemContainer = styled.div`
     }
 `;
 
-export const ThumbnailContiner = styled.div`
+export const ThumbnailContainer = styled.div`
     min-height: 185px;
     background-image: url(${props => props.thumbnail});
     background-size: 110%;
