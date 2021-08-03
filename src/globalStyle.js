@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: #E9ECEF;
+        overflow-x: hidden;
     }
 
     @media(max-width: 768px){
