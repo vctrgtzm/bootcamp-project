@@ -9,8 +9,6 @@ describe('App', () => {
         expect(headerComponent).toBeInTheDocument();
     });
 
-    //TEST NOT WORKING WITH HEADER BY ROLE, TODO: FIND OUT WHY
-
     test('should render the header', () => {
         render(<App />);
 
@@ -18,10 +16,5 @@ describe('App', () => {
         expect(headerComponent).toBeInTheDocument();
     });
 
-    test('should render a view', () => {
-        render(<App />);
-
-        const view = screen.queryByRole("main");
-        expect(view).toBeInTheDocument();
-    });
+    test.todo('should render a view');
 });
