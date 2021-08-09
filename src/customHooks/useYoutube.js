@@ -55,7 +55,6 @@ export function useYoutubeVideo() {
                     key: process.env.REACT_APP_YOUTUBE_API_KEY
                 }
             }).then(res => {
-                console.log(res);
                 setVideoData(res.data);
             }).catch(err => {
                 setVideoError(err);
