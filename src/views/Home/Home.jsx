@@ -2,7 +2,7 @@ import VideoGrid from '../../components/VideoGrid/VideoGrid';
 import { LoadingIndicator, ErrorContainer } from '../../components/App/App.styled';
 
 
-function MainView({ searchIsLoading, searchResult, searchError, setVideoId }) {
+function Home({ searchIsLoading, searchResult, searchError, setVideoId }) {
 
     if (searchIsLoading) {
         return <LoadingIndicator />
@@ -25,4 +25,4 @@ function MainView({ searchIsLoading, searchResult, searchError, setVideoId }) {
     );
 }
 
-export default MainView;
+export default Home;

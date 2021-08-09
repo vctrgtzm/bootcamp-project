@@ -1,6 +1,6 @@
 
 import { useYoutubeSearch, useYoutubeVideo } from "../../customHooks/useYoutube";
-import MainView from "../../views/MainView";
+import Home from "../../views/Home";
 import VideoDetails from "../../views/VideDetails";
 import Header from "../Header";
 
@@ -28,7 +28,7 @@ function App() {
             />
             <main>
                 {videoId == null ? (
-                    <MainView
+                    <Home
                         searchIsLoading={searchIsLoading}
                         searchResult={searchResult}
                         searchError={searchError}
