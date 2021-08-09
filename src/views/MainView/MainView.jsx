@@ -12,7 +12,7 @@ function MainView({ searchIsLoading, searchResult, searchError, setVideoId }) {
         return (
             <ErrorContainer>
                 <h1>Something went wrong when fetching data from youtube API :(</h1>
-                <p>{searchError}</p>
+                <p>{searchError.response?.data?.error?.message ?? searchError.message}</p>
             </ErrorContainer>
         );
     }
