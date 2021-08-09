@@ -26,21 +26,23 @@ function App() {
                 setSearchTerm={setSearchTerm}
                 setVideoId={setVideoId}
             />
-            {videoId == null ? (
-                <MainView
-                    searchIsLoading={searchIsLoading}
-                    searchResult={searchResult}
-                    searchError={searchError}
-                    setVideoId={setVideoId}
-                />
-            ) : (
-                <VideoDetails
-                    videoData={videoData}
-                    videoIsLoading={videoIsLoading}
-                    videoError={videoError}
-                    setVideoId={setVideoId}
-                />
-            )}
+            <main>
+                {videoId == null ? (
+                    <MainView
+                        searchIsLoading={searchIsLoading}
+                        searchResult={searchResult}
+                        searchError={searchError}
+                        setVideoId={setVideoId}
+                    />
+                ) : (
+                    <VideoDetails
+                        videoData={videoData}
+                        videoIsLoading={videoIsLoading}
+                        videoError={videoError}
+                        setVideoId={setVideoId}
+                    />
+                )}
+            </main>
 
         </>
     );

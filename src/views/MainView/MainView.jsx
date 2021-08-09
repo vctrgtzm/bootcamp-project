@@ -18,12 +18,10 @@ function MainView({ searchIsLoading, searchResult, searchError, setVideoId }) {
     }
 
     return (
-        <div role="main">
-            <VideoGrid
-                items={searchResult.items}
-                setVideoId={setVideoId}
-            />
-        </div>
+        <VideoGrid
+            items={searchResult.items}
+            setVideoId={setVideoId}
+        />
     );
 }
 
