@@ -5,7 +5,7 @@ import { LoadingIndicator, ErrorContainer } from '../../components/App/App.style
 function Home({ searchIsLoading, searchResult, searchError, setVideoId }) {
 
     if (searchIsLoading) {
-        return <LoadingIndicator />
+        return <LoadingIndicator role="progressbar"/>
     }
 
     if (searchError) {
