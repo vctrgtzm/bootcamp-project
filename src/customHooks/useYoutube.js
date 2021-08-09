@@ -25,7 +25,6 @@ export function useYoutubeSearch(defaultSearchTerm, defaultMaxResults) {
                 }).then(res => {
                     setSearchRestult(res.data);
                 }).catch(err => {
-                    console.error(err);
                     setSearchError(err);
                 });
 
@@ -49,7 +48,7 @@ export function useYoutubeVideo() {
         const fetchData = async () => {
             setVideoIsLoading(true);
 
-            await axios.get('https://youtube.googleapis.com/youtube/v3/videos', {
+            await axios.get('https://www.googleapis.com/youtube/v3/videos', {
                 params: {
                     part: 'snippet,player',
                     id: videoId,
@@ -58,7 +57,6 @@ export function useYoutubeVideo() {
             }).then(res => {
                 setVideoData(res.data);
             }).catch(err => {
-                console.error(err);
                 setVideoError(err);
             });
 
@@ -95,7 +93,6 @@ export function useYoutubeRelatedVideos(videoId, defaultMaxResults) {
                 }).then(res => {
                     setRelatedVideosResult(res.data);
                 }).catch(err => {
-                    console.error(err);
                     setRelatedVideosError(err);
                 });
 
