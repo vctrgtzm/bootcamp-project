@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Header from './Header';
 
 describe('Header', () => {
@@ -35,6 +35,27 @@ describe('Header', () => {
 
         const avatar = screen.queryByRole("figure");
         expect(avatar).toBeInTheDocument();
-    })
+    });
 
+    test('should trigger an api call to search on enter pressed on search input', () => {
+        const setSearchTerm = jest.fn();
+        const setVideoId = jest.fn();
+
+        const newSearchTerm = 'react tutorials';
+
+        render(<Header
+            setSearchTerm={setSearchTerm}
+            setVideoId={setVideoId}
+        />);
+
+        const searchInput = screen.queryByRole('search');
+
+        fireEvent.change(searchInput, { target: { value: newSearchTerm } });
+
+        fireEvent.keyDown(searchInput, { key: 'Enter' });
+
+        expect(setSearchTerm).toBeCalledWith(newSearchTerm);
+        expect(setVideoId).toBeCalledWith(null);
+
+    });
 });
