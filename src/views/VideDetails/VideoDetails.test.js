@@ -57,7 +57,7 @@ describe('VideoDetails', () => {
                 setVideoId={jest.fn()}
             />)
 
-            const backToVideosButton = screen.queryByText('Back to videos');
+            const backToVideosButton = screen.queryByText(/Back to videos/i);
             expect(backToVideosButton).toBeInTheDocument();
 
         });
