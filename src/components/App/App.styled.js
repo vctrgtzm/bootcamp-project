@@ -28,6 +28,7 @@ export const LoadingIndicator = styled.div`
 
 export const ErrorContainer = styled.div`
     padding-top: 100px;
+    padding: 100px 10px 10px 10px;
     color: #03045E;
     width: 100%;
     text-align: center;
