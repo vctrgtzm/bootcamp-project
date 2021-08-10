@@ -45,6 +45,4 @@ export const ErrorContainer = styled.div`
     p {
         font: bold 20px 'Amatic SC', arial;
     }
-
-
 `;
