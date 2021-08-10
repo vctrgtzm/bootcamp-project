@@ -21,8 +21,6 @@ function VideoDetails({ videoData, videoIsLoading, videoError, setVideoId }) {
         return (
             <ErrorContainer>
                 <h1>Something went wrong when fetching data from youtube API :(</h1>
-                <p>Fetching video: {videoError.response?.data?.error?.message ?? videoError.message}</p>
-                <p>Fetching related videos: {relatedVideosError.response?.data?.error?.message ?? relatedVideosError.message}</p>
             </ErrorContainer>
         );
     }
