@@ -9,11 +9,12 @@ import {
     ThemeToggleContainer,
     NavigationItems,
     NavigationItem,
-    MenuIconContainer
+    MenuIconContainer,
+    SearchButton
 } from './Header.styled';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdjust, faUser, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faAdjust, faUser, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../logo.png';
 import { useState } from 'react';
@@ -22,9 +23,16 @@ function Header({ setSearchTerm, setVideoId }) {
     const [searchVal, setSearchVal] = useState('');
 
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && e.target.value) {
             setVideoId(null);
-            setSearchTerm(e.target.value);            
+            setSearchTerm(e.target.value);
+        }
+    }
+
+    const handleSearchButtonClick = () => {
+        if (searchVal.length > 0) {
+            setVideoId(null);
+            setSearchTerm(searchVal);
         }
     }
 
@@ -40,15 +48,17 @@ function Header({ setSearchTerm, setVideoId }) {
                     <FontAwesomeIcon icon={faBars} size="lg" />
                 </MenuIconContainer>
             </HeaderSectionLeft>
-            <HeaderSectionCenter>
-                <SearchInput
-                    role="search"
+            <HeaderSectionCenter role="search">
+                <SearchInput                    
                     type="text"
                     placeholder="Search..."
                     value={searchVal}
                     onChange={e => setSearchVal(e.target.value)}
                     onKeyDown={handleKeyDown}
                 />
+                <SearchButton title="Search" onClick={handleSearchButtonClick}>
+                    <FontAwesomeIcon icon={faSearch} size="lg" />
+                </SearchButton>
             </HeaderSectionCenter>
             <HeaderSectionRight className="hidden-mobile">
                 <ThemeToggleContainer role="switch">

@@ -48,7 +48,7 @@ describe('Header', () => {
             setVideoId={setVideoId}
         />);
 
-        const searchInput = screen.queryByRole('search');
+        const searchInput = screen.queryByPlaceholderText(/search.../i);
 
         fireEvent.change(searchInput, { target: { value: newSearchTerm } });
 
@@ -57,5 +57,27 @@ describe('Header', () => {
         expect(setSearchTerm).toBeCalledWith(newSearchTerm);
         expect(setVideoId).toBeCalledWith(null);
 
+    });
+
+    test('should trigger an api call to search when search button is clicked', () => {
+        const setSearchTerm = jest.fn();
+        const setVideoId = jest.fn();
+
+        const newSearchTerm = 'react tutorials';
+
+        render(<Header
+            setSearchTerm={setSearchTerm}
+            setVideoId={setVideoId}
+        />);
+
+        const searchButton = screen.queryByRole('button');
+        const searchInput = screen.queryByPlaceholderText(/search.../i);
+
+        fireEvent.change(searchInput, { target: { value: newSearchTerm } });
+
+        fireEvent.click(searchButton);
+
+        expect(setSearchTerm).toBeCalledWith(newSearchTerm);
+        expect(setVideoId).toBeCalledWith(null);
     });
 });
