@@ -1,11 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import * as useYoutubeHooks from "../../customHooks/useYoutube";
+import * as useYoutubeSearch from "../../customHooks/useYoutubeSearch/useYoutubeSearch";
+import * as useYoutubeVideo from "../../customHooks/useYoutubeVideo/useYoutubeVideo";
 import App from './App';
 
 describe('App', () => {    
 
     test('should render the header', () => {
-        jest.spyOn(useYoutubeHooks, 'useYoutubeSearch').mockImplementation(() => ({
+        jest.spyOn(useYoutubeVideo, 'useYoutubeVideo').mockImplementation(() => ({
             searchResult: { items: [] },
             searchIsLoading: false,
             searchError: null,
@@ -13,7 +14,7 @@ describe('App', () => {
             setSearchMaxResults: () => { }
         }));
         
-        jest.spyOn(useYoutubeHooks, 'useYoutubeVideo').mockImplementation(() => ({
+        jest.spyOn(useYoutubeVideo, 'useYoutubeVideo').mockImplementation(() => ({
             videoData: { items: [] },
             videoIsLoading: false,
             videoError: null,
@@ -27,7 +28,7 @@ describe('App', () => {
     });
 
     test('should render a view', () => {
-        jest.spyOn(useYoutubeHooks, 'useYoutubeSearch').mockImplementation(() => ({
+        jest.spyOn(useYoutubeSearch, 'useYoutubeSearch').mockImplementation(() => ({
             searchResult: { items: [] },
             searchIsLoading: false,
             searchError: null,
@@ -35,7 +36,7 @@ describe('App', () => {
             setSearchMaxResults: () => { }
         }));
         
-        jest.spyOn(useYoutubeHooks, 'useYoutubeVideo').mockImplementation(() => ({
+        jest.spyOn(useYoutubeVideo, 'useYoutubeVideo').mockImplementation(() => ({
             videoData: { items: [] },
             videoIsLoading: false,
             videoError: null,

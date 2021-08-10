@@ -1,5 +1,6 @@
 
-import { useYoutubeSearch, useYoutubeVideo } from "../../customHooks/useYoutube";
+import { useYoutubeSearch } from "../../customHooks/useYoutubeSearch/useYoutubeSearch";
+import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVideo'
 import Home from "../../views/Home";
 import VideoDetails from "../../views/VideDetails";
 import Header from "../Header";

@@ -1,7 +1,7 @@
 import { ErrorContainer, LoadingIndicator } from "../../components/App/App.styled";
 import RelatedVideos from "../../components/RelatedVideos";
 import VideoPlayer from "../../components/VideoPlayer";
-import { useYoutubeRelatedVideos } from "../../customHooks/useYoutube";
+import { useYoutubeRelatedVideos } from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
 import { VideoDetailsViewContainer } from "./VideoDetails.styled";
 
 

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import * as useYoutubeHooks from "../../customHooks/useYoutube";
+import * as useYoutubeRelatedVideos from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
 import VideoDetails from "./VideoDetails";
 
 const mockVideoData = require('../../mocks/youtube-video-details-mock.json');
@@ -23,7 +23,7 @@ describe('VideoDetails', () => {
     describe('when data has been fetched', () => {
         test('should render the video player', () => {
 
-            jest.spyOn(useYoutubeHooks, 'useYoutubeRelatedVideos').mockImplementation(() => ({
+            jest.spyOn(useYoutubeRelatedVideos, 'useYoutubeRelatedVideos').mockImplementation(() => ({
                 relatedVideosResult: {items: []},
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
@@ -43,7 +43,7 @@ describe('VideoDetails', () => {
 
         test('should render the "back to videos" button', () => {
 
-            jest.spyOn(useYoutubeHooks, 'useYoutubeRelatedVideos').mockImplementation(() => ({
+            jest.spyOn(useYoutubeRelatedVideos, 'useYoutubeRelatedVideos').mockImplementation(() => ({
                 relatedVideosResult: {items: []},
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
@@ -63,7 +63,7 @@ describe('VideoDetails', () => {
         });
 
         test('should render the title and description of the video', () => {
-            jest.spyOn(useYoutubeHooks, 'useYoutubeRelatedVideos').mockImplementation(() => ({
+            jest.spyOn(useYoutubeRelatedVideos, 'useYoutubeRelatedVideos').mockImplementation(() => ({
                 relatedVideosResult: {items: []},
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
@@ -86,7 +86,7 @@ describe('VideoDetails', () => {
         test('should render the list of related videos contained in a result of a search request', () =>{
             const relatedVideosDataMock = require('../../mocks/youtube-related-videos-mock.json')
 
-            jest.spyOn(useYoutubeHooks, 'useYoutubeRelatedVideos').mockImplementation(() => ({
+            jest.spyOn(useYoutubeRelatedVideos, 'useYoutubeRelatedVideos').mockImplementation(() => ({
                 relatedVideosResult: relatedVideosDataMock,
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
@@ -107,7 +107,7 @@ describe('VideoDetails', () => {
 
     describe('when an error ocurred during fetching', () => {
         test('the error message should be rendered', () => {
-            jest.spyOn(useYoutubeHooks, 'useYoutubeRelatedVideos').mockImplementation(() => ({
+            jest.spyOn(useYoutubeRelatedVideos, 'useYoutubeRelatedVideos').mockImplementation(() => ({
                 relatedVideosResult: null,
                 relatedVideosIsLoading: false,
                 relatedVideosError: 'Error fetching',
@@ -124,9 +124,4 @@ describe('VideoDetails', () => {
             expect(errorMessage).toBeInTheDocument();
         });
     });
-
-
-
-
-
 });
