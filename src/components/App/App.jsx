@@ -10,7 +10,7 @@ function App() {
         searchIsLoading,
         searchError,
         setSearchTerm
-    } = useYoutubeSearch('wizeline', 50); //default search term 'wizeline' with default max result 50
+    } = useYoutubeSearch();
 
     const {
         videoData,

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export function useYoutubeSearch(defaultSearchTerm, defaultMaxResults) {
+export function useYoutubeSearch(defaultSearchTerm = 'wizeline', defaultMaxResults=50) {
     const [searchTerm, setSearchTerm] = useState(defaultSearchTerm);
     const [searchMaxResults, setSearchMaxResults] = useState(defaultMaxResults);
     const [searchIsLoading, setSearchIsLoading] = useState(true);
