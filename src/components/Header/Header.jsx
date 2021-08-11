@@ -9,15 +9,33 @@ import {
     ThemeToggleContainer,
     NavigationItems,
     NavigationItem,
-    MenuIconContainer
+    MenuIconContainer,
+    SearchButton
 } from './Header.styled';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdjust, faUser, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faAdjust, faUser, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../logo.png';
+import { useState } from 'react';
 
-function Header() {
+function Header({ setSearchTerm, setVideoId }) {
+    const [searchVal, setSearchVal] = useState('');
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && e.target.value) {
+            setVideoId(null);
+            setSearchTerm(e.target.value);
+        }
+    }
+
+    const handleSearchButtonClick = () => {
+        if (searchVal.length > 0) {
+            setVideoId(null);
+            setSearchTerm(searchVal);
+        }
+    }
+
     return (
         <StyledHeader role="banner" data-testid="header">
             <HeaderSectionLeft>
@@ -30,8 +48,17 @@ function Header() {
                     <FontAwesomeIcon icon={faBars} size="lg" />
                 </MenuIconContainer>
             </HeaderSectionLeft>
-            <HeaderSectionCenter>
-                <SearchInput role="search" type="text" placeholder="Search..." />
+            <HeaderSectionCenter role="search">
+                <SearchInput                    
+                    type="text"
+                    placeholder="Search..."
+                    value={searchVal}
+                    onChange={e => setSearchVal(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                />
+                <SearchButton title="Search" onClick={handleSearchButtonClick}>
+                    <FontAwesomeIcon icon={faSearch} size="lg" />
+                </SearchButton>
             </HeaderSectionCenter>
             <HeaderSectionRight className="hidden-mobile">
                 <ThemeToggleContainer role="switch">

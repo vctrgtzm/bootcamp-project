@@ -1,0 +1,65 @@
+{
+    "kind": "youtube#videoListResponse",
+    "etag": "iGxIlkeJWmfWt5HcQVH2deiDHP0",
+    "items": [
+      {
+        "kind": "youtube#video",
+        "etag": "vIpNUyU30Zydapd5uO9qkkQVPbE",
+        "id": "HYyRZiwBWc8",
+        "snippet": {
+          "publishedAt": "2019-04-18T18:48:04Z",
+          "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
+          "title": "Wizeline Guadalajara | Bringing Silicon Valley to Mexico",
+          "description": "Wizeline continues to offer a Silicon Valley culture in burgeoning innovation hubs like Mexico and Vietnam. In 2018, our Guadalajara team moved into a contemporary new home: a people-centric office where our team can learn, grow and do its best work.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/HYyRZiwBWc8/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "Wizeline",
+          "tags": [
+            "Wizeline",
+            "technology",
+            "innovation",
+            "best places to work"
+          ],
+          "categoryId": "28",
+          "liveBroadcastContent": "none",
+          "localized": {
+            "title": "Wizeline Guadalajara | Bringing Silicon Valley to Mexico",
+            "description": "Wizeline continues to offer a Silicon Valley culture in burgeoning innovation hubs like Mexico and Vietnam. In 2018, our Guadalajara team moved into a contemporary new home: a people-centric office where our team can learn, grow and do its best work."
+          }
+        },
+        "player": {
+          "embedHtml": "\u003ciframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/HYyRZiwBWc8\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen\u003e\u003c/iframe\u003e"
+        }
+      }
+    ],
+    "pageInfo": {
+      "totalResults": 1,
+      "resultsPerPage": 1
+    }
+  }
+  
