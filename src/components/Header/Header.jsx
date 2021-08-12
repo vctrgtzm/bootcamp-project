@@ -15,12 +15,15 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdjust, faUser, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
-
 import logo from '../../logo.png';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import GlobalContext from '../../state/context';
 
-function Header({ setSearchTerm, setVideoId }) {
+function Header() {
     const [searchVal, setSearchVal] = useState('');
+    const { youtubeSearch, youtubeVideo } = useContext(GlobalContext);
+    const { setSearchTerm } = youtubeSearch;
+    const { setVideoId } = youtubeVideo;
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.target.value) {
@@ -49,7 +52,7 @@ function Header({ setSearchTerm, setVideoId }) {
                 </MenuIconContainer>
             </HeaderSectionLeft>
             <HeaderSectionCenter role="search">
-                <SearchInput                    
+                <SearchInput
                     type="text"
                     placeholder="Search..."
                     value={searchVal}

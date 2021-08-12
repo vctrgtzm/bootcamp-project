@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import GlobalContext from "../../state/context";
 import { RelatedVideoContainer, RelatedVideosContainer, ThumbnailContainer } from "./RelatedVideos.styled";
 
-const RelatedVideos = ({ relatedVideosResult, setVideoId }) => {
+const RelatedVideos = ({ relatedVideosResult }) => {
+    const { youtubeVideo } = useContext(GlobalContext);
+    const { setVideoId } = youtubeVideo;
 
     return (
         <RelatedVideosContainer>

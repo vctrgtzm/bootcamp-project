@@ -118,12 +118,12 @@ export const AvatarContainer = styled.div`
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: #48CAE4;
+    background-color: #00B4D8;
     margin-left: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #90E0EF;
+    color: #48CAE4;
 
     &:hover{
         cursor: pointer;

@@ -1,11 +1,14 @@
 import VideoGrid from '../../components/VideoGrid/VideoGrid';
 import { LoadingIndicator, ErrorContainer } from '../../components/App/App.styled';
+import { useContext } from 'react';
+import GlobalContext from '../../state/context';
 
-
-function Home({ searchIsLoading, searchResult, searchError, setVideoId }) {
+function Home() {
+    const { youtubeSearch } = useContext(GlobalContext);
+    const { searchIsLoading, searchError } = youtubeSearch;
 
     if (searchIsLoading) {
-        return <LoadingIndicator role="progressbar"/>
+        return <LoadingIndicator role="progressbar" />
     }
 
     if (searchError) {
@@ -17,10 +20,7 @@ function Home({ searchIsLoading, searchResult, searchError, setVideoId }) {
     }
 
     return (
-        <VideoGrid
-            items={searchResult.items}
-            setVideoId={setVideoId}
-        />
+        <VideoGrid />
     );
 }
 

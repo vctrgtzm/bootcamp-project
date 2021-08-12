@@ -1,8 +1,14 @@
+import { useContext } from "react";
+import GlobalContext from "../../state/context";
 import VideoCard from "../VideoCard";
 import { GridContainer } from "./VideoGrid.styled";
 
 
-function VideoGrid({ items, setVideoId }) {
+function VideoGrid() {
+    const { youtubeSearch, youtubeVideo } = useContext(GlobalContext);
+    const { items } = youtubeSearch.searchResult;
+    const { setVideoId } = youtubeVideo;
+
     return (
         <GridContainer>
             {items.filter(item => item.snippet !== undefined).map(item => { //filter results without snippet

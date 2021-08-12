@@ -1,10 +1,14 @@
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import GlobalContext from "../../state/context";
 import { BackToVideosButton, IFameContainer, VideoContainer, VideoDetailsContainer } from './VideoPlayer.styled';
 
 
 
-const VideoPlayer = ({ videoData, setVideoId }) => {
+const VideoPlayer = () => {
+    const {youtubeVideo} = useContext(GlobalContext);
+    const {videoData, setVideoId} = youtubeVideo;
     const videoItem = videoData?.items[0];
 
     return (
