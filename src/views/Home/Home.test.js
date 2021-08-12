@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import GlobalContext from "../../state/context";
 import Home from "./Home";
-
+import { themes } from '../../state/themes';
+import { ThemeProvider } from 'styled-components';
 
 describe('Home', () => {
     describe('when fetching data', () => {
@@ -19,7 +20,9 @@ describe('Home', () => {
                         }
                     }}
                 >
-                    <Home />
+                    <ThemeProvider theme={themes.dark}>
+                        <Home />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -45,7 +48,9 @@ describe('Home', () => {
                         }
                     }}
                 >
-                    <Home />
+                    <ThemeProvider theme={themes.dark}>
+                        <Home />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -70,7 +75,9 @@ describe('Home', () => {
                         }
                     }}
                 >
-                    <Home />
+                    <ThemeProvider theme={themes.dark}>
+                        <Home />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 

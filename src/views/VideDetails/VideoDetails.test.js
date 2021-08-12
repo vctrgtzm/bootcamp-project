@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import * as useYoutubeRelatedVideos from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
 import GlobalContext from "../../state/context";
 import VideoDetails from "./VideoDetails";
+import { themes } from '../../state/themes';
+import { ThemeProvider } from 'styled-components';
 
 const mockVideoData = require('../../mocks/youtube-video-details-mock.json');
 
@@ -20,7 +22,9 @@ describe('VideoDetails', () => {
                         }
                     }}
                 >
-                    <VideoDetails />
+                    <ThemeProvider theme={themes.dark}>
+                        <VideoDetails />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -50,7 +54,9 @@ describe('VideoDetails', () => {
                         }
                     }}
                 >
-                    <VideoDetails />
+                    <ThemeProvider theme={themes.dark}>
+                        <VideoDetails />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -78,7 +84,9 @@ describe('VideoDetails', () => {
                         }
                     }}
                 >
-                    <VideoDetails />
+                    <ThemeProvider theme={themes.dark}>
+                        <VideoDetails />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -106,7 +114,9 @@ describe('VideoDetails', () => {
                         }
                     }}
                 >
-                    <VideoDetails />
+                    <ThemeProvider theme={themes.dark}>
+                        <VideoDetails />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -137,7 +147,9 @@ describe('VideoDetails', () => {
                         }
                     }}
                 >
-                    <VideoDetails />
+                    <ThemeProvider theme={themes.dark}>
+                        <VideoDetails />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 
@@ -166,7 +178,9 @@ describe('VideoDetails', () => {
                         }
                     }}
                 >
-                    <VideoDetails />
+                    <ThemeProvider theme={themes.dark}>
+                        <VideoDetails />
+                    </ThemeProvider>
                 </GlobalContext.Provider>
             );
 

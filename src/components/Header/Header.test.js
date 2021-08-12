@@ -1,38 +1,60 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 import GlobalContext from '../../state/context';
 import Header from './Header';
+import { themes } from '../../state/themes';
 
 describe('Header', () => {
     test('should render logo', () => {
-        render(<Header />);
+        render(
+            <ThemeProvider theme={themes.dark}>
+                <Header />
+            </ThemeProvider>
+        );
 
         const logo = screen.queryByRole("img");
         expect(logo).toBeInTheDocument();
     });
 
     test('should render navigation bar', () => {
-        render(<Header />);
+        render(
+            <ThemeProvider theme={themes.dark}>
+                <Header />
+            </ThemeProvider>
+        );
 
         const navBar = screen.queryByRole("navigation");
         expect(navBar).toBeInTheDocument();
     });
 
     test('should render search input', () => {
-        render(<Header />);
+        render(
+            <ThemeProvider theme={themes.dark}>
+                <Header />
+            </ThemeProvider>
+        );
 
         const searchInput = screen.queryByRole("search");
         expect(searchInput).toBeInTheDocument();
     });
 
     test('should render theme toggle', () => {
-        render(<Header />);
+        render(
+            <ThemeProvider theme={themes.dark}>
+                <Header />
+            </ThemeProvider>
+        );
 
         const themeToggle = screen.queryByRole("switch");
         expect(themeToggle).toBeInTheDocument();
     });
 
     test('should render avatar', () => {
-        render(<Header />);
+        render(
+            <ThemeProvider theme={themes.dark}>
+                <Header />
+            </ThemeProvider>
+        );
 
         const avatar = screen.queryByRole("figure");
         expect(avatar).toBeInTheDocument();
@@ -51,7 +73,9 @@ describe('Header', () => {
                     youtubeVideo: { setVideoId }
                 }}
             >
-                <Header />
+                <ThemeProvider theme={themes.dark}>
+                    <Header />
+                </ThemeProvider>
             </GlobalContext.Provider>
         );
 
@@ -79,7 +103,9 @@ describe('Header', () => {
                     youtubeVideo: { setVideoId }
                 }}
             >
-                <Header />
+                <ThemeProvider theme={themes.dark}>
+                    <Header />
+                </ThemeProvider>
             </GlobalContext.Provider>
         );
 
