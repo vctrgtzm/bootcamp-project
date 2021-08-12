@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import GlobalContext from '../../state/context';
 import VideoPlayer from './VideoPlayer';
 
 
@@ -7,10 +8,16 @@ describe('VideoPlayer', () => {
         const videoDataMock = require('../../mocks/youtube-video-details-mock.json');
         const setVideoId = jest.fn();
         render(
-            <VideoPlayer
-                setVideoId={setVideoId}
-                videoData={videoDataMock}
-            />
+            <GlobalContext.Provider
+                value={{
+                    youtubeVideo: {
+                        setVideoId,
+                        videoData: videoDataMock
+                    }
+                }}
+            >
+                <VideoPlayer />
+            </GlobalContext.Provider>
         );
 
         const backToVideosButton = screen.queryByText(/back to videos/i);
