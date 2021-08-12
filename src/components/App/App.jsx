@@ -27,7 +27,7 @@ function App() {
         setVideoId
     } = useYoutubeVideo();
 
-    const [globalState, globalDispatch] = useReducer(globalReducer, { theme: themes.light });
+    const [globalState, globalDispatch] = useReducer(globalReducer, { theme: themes.dark });
 
     return (
         <GlobalContext.Provider value={{
