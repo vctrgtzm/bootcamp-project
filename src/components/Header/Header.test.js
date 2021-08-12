@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import GlobalContext from '../../state/context';
 import Header from './Header';
 
 describe('Header', () => {
@@ -43,10 +44,16 @@ describe('Header', () => {
 
         const newSearchTerm = 'react tutorials';
 
-        render(<Header
-            setSearchTerm={setSearchTerm}
-            setVideoId={setVideoId}
-        />);
+        render(
+            <GlobalContext.Provider
+                value={{
+                    youtubeSearch: { setSearchTerm },
+                    youtubeVideo: { setVideoId }
+                }}
+            >
+                <Header />
+            </GlobalContext.Provider>
+        );
 
         const searchInput = screen.queryByPlaceholderText(/search.../i);
 
@@ -65,10 +72,16 @@ describe('Header', () => {
 
         const newSearchTerm = 'react tutorials';
 
-        render(<Header
-            setSearchTerm={setSearchTerm}
-            setVideoId={setVideoId}
-        />);
+        render(
+            <GlobalContext.Provider
+                value={{
+                    youtubeSearch: { setSearchTerm },
+                    youtubeVideo: { setVideoId }
+                }}
+            >
+                <Header />
+            </GlobalContext.Provider>
+        );
 
         const searchButton = screen.queryByRole('button');
         const searchInput = screen.queryByPlaceholderText(/search.../i);
