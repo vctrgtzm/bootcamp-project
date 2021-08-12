@@ -8,6 +8,8 @@ import globalReducer from "../../state/reducer";
 import { useReducer } from "react";
 import GlobalContext from "../../state/context";
 import { themes } from "../../state/themes";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from '../../globalStyle';
 
 function App() {
     const {
@@ -45,15 +47,17 @@ function App() {
                 setVideoId
             }
         }}>
-            <Header />
-            <main>
-                {videoId == null ? (
-                    <Home />
-                ) : (
-                    <VideoDetails />
-                )}
-            </main>
-
+            <ThemeProvider theme={globalState.theme}>
+                <GlobalStyle />
+                <Header />
+                <main>
+                    {videoId == null ? (
+                        <Home />
+                    ) : (
+                        <VideoDetails />
+                    )}
+                </main>
+            </ThemeProvider>
         </GlobalContext.Provider>
     );
 }

@@ -23,7 +23,7 @@ export const RelatedVideosContainer = styled.div`
 `;
 
 export const RelatedVideoContainer = styled.div`
-    background-color: #f8f9fa;
+    background-color: ${props => props.theme.videoCards.backgroundColor};
     min-height: 115px;
     width: 100%;
     display: flex;
@@ -32,14 +32,14 @@ export const RelatedVideoContainer = styled.div`
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
     margin-right: 10px;
     cursor: pointer;
-    font-family: 'Amatic SC', Arial;
+    font-family: ${props => props.theme.fontFam}, Arial;
     font-weight: bold;
     font-size: 24px;
-    color: #03045E;
+    color: ${props => props.theme.fontColor};
     transition: background-color .3s ease-out;
 
     &:hover {
-        background-color: #e9ecef;
+        background-color: ${props => props.theme.videoCards.backgroundColorHover};
     }
 
     &:hover > div {
@@ -55,7 +55,7 @@ export const RelatedVideoContainer = styled.div`
 `;
 
 export const ThumbnailContainer = styled.div`
-    background-color: #48CAE4;
+    background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
     flex-basis: 40%;
     background-image: url(${props => props.thumbnail});
     background-size: 30vh;

@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyle from './globalStyle';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalStyle />
+  <React.StrictMode>    
     <App />
   </React.StrictMode>,
   document.getElementById('root')

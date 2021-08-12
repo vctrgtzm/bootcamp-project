@@ -13,8 +13,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: #E9ECEF;
+        background-color: ${props => props.theme.body.backgroundColor};
         overflow-x: hidden;
+    }
+
+    ::placeholder {
+        opacity: 1;
+        color: ${props => props.theme.placeholderColor}
     }
 
     @media(max-width: 768px){

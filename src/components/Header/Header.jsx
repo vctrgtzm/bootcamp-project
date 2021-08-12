@@ -6,7 +6,7 @@ import {
     HeaderSectionRight,
     SearchInput,
     AvatarContainer,
-    ThemeToggleContainer,
+    ThemeToggle,
     NavigationItems,
     NavigationItem,
     MenuIconContainer,
@@ -16,14 +16,16 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdjust, faUser, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 import logo from '../../logo.png';
-import { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect, useCallback } from 'react';
 import GlobalContext from '../../state/context';
+import actionTypes from '../../state/actionTypes';
 
 function Header() {
     const [searchVal, setSearchVal] = useState('');
-    const { youtubeSearch, youtubeVideo } = useContext(GlobalContext);
+    const { youtubeSearch, youtubeVideo, globalDispatch } = useContext(GlobalContext);
     const { setSearchTerm } = youtubeSearch;
     const { setVideoId } = youtubeVideo;
+    const themeToggleRef = useRef();
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.target.value) {
@@ -38,6 +40,30 @@ function Header() {
             setSearchTerm(searchVal);
         }
     }
+
+    const handleToggleMouseLeave = useCallback(() => {
+        globalDispatch({ type: actionTypes.SET_THEME });
+    }, [globalDispatch]);
+
+    const handleToggleMouseEnter = useCallback(() => {
+        themeToggleRef.current.addEventListener('mouseleave', handleToggleMouseLeave);
+        globalDispatch({ type: actionTypes.SET_THEME });
+    }, [globalDispatch, handleToggleMouseLeave]);
+
+    const handleToggleMouseClick = () => {
+        themeToggleRef.current.removeEventListener('mouseleave', handleToggleMouseLeave);
+    }
+
+    useEffect(() => {
+        const current = themeToggleRef.current;
+        current.addEventListener('mouseenter', handleToggleMouseEnter);
+        current.addEventListener('mouseleave', handleToggleMouseLeave);
+
+        return () => {
+            current.removeEventListener('mouseenter', handleToggleMouseEnter);
+            current.removeEventListener('mouseleave', handleToggleMouseLeave);
+        }
+    }, [handleToggleMouseEnter, handleToggleMouseLeave]);
 
     return (
         <StyledHeader role="banner" data-testid="header">
@@ -64,9 +90,14 @@ function Header() {
                 </SearchButton>
             </HeaderSectionCenter>
             <HeaderSectionRight className="hidden-mobile">
-                <ThemeToggleContainer role="switch">
-                    <FontAwesomeIcon icon={faAdjust} size="sm" />
-                </ThemeToggleContainer>
+                <div ref={themeToggleRef}>
+                    <ThemeToggle
+                        role="switch"
+                        icon={faAdjust}
+                        size="sm"
+                        onClick={handleToggleMouseClick}
+                    />
+                </div>
                 <AvatarContainer role="figure">
                     <FontAwesomeIcon icon={faUser} size="sm" />
                 </AvatarContainer>
