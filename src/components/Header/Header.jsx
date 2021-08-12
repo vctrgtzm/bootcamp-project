@@ -90,9 +90,8 @@ function Header() {
                 </SearchButton>
             </HeaderSectionCenter>
             <HeaderSectionRight className="hidden-mobile">
-                <div ref={themeToggleRef}>
+                <div role="switch" aria-checked="false" ref={themeToggleRef}>
                     <ThemeToggle
-                        role="switch"
                         icon={faAdjust}
                         size="sm"
                         onClick={handleToggleMouseClick}
