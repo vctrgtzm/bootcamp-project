@@ -62,14 +62,14 @@ export const LoadingIndicator = styled.div`
     background-color: ${props => props.theme.loadingIndicatorColor};
     width: 0px;
     height: 5px;
-    transition: width .8s ease-out;
+    transition: width .5s ease-out;
     border-radius: 10px;
 `;
 
 export const DescriptionContainer = styled.div`
     overflow: hidden;
     display: none;
-    animation: fade 2s ease-out .8s 1 normal forwards;
+    animation: fade 2s ease-out .5s 1 normal forwards;
     max-height: 0px;
 
     & > p {
