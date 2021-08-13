@@ -45,10 +45,10 @@ function Header() {
         globalDispatch({ type: actionTypes.SET_THEME });
     }, [globalDispatch]);
 
-    const handleToggleMouseEnter = useCallback(() => {
+    const handleToggleMouseEnter = () => {
         themeToggleRef.current.addEventListener('mouseleave', handleToggleMouseLeave);
         globalDispatch({ type: actionTypes.SET_THEME });
-    }, [globalDispatch, handleToggleMouseLeave]);
+    }
 
     const handleToggleMouseClick = () => {
         themeToggleRef.current.removeEventListener('mouseleave', handleToggleMouseLeave);
@@ -56,14 +56,11 @@ function Header() {
 
     useEffect(() => {
         const current = themeToggleRef.current;
-        current.addEventListener('mouseenter', handleToggleMouseEnter);
-        current.addEventListener('mouseleave', handleToggleMouseLeave);
-
+        
         return () => {
-            current.removeEventListener('mouseenter', handleToggleMouseEnter);
             current.removeEventListener('mouseleave', handleToggleMouseLeave);
         }
-    }, [handleToggleMouseEnter, handleToggleMouseLeave]);
+    }, [handleToggleMouseLeave]);
 
     return (
         <StyledHeader role="banner" data-testid="header">
@@ -90,11 +87,16 @@ function Header() {
                 </SearchButton>
             </HeaderSectionCenter>
             <HeaderSectionRight className="hidden-mobile">
-                <div role="switch" aria-checked="false" ref={themeToggleRef}>
+                <div
+                    role="switch"
+                    aria-checked="false"
+                    ref={themeToggleRef}
+                    onClick={handleToggleMouseClick}
+                    onMouseEnter={handleToggleMouseEnter}
+                >
                     <ThemeToggle
                         icon={faAdjust}
                         size="sm"
-                        onClick={handleToggleMouseClick}
                     />
                 </div>
                 <AvatarContainer role="figure">
