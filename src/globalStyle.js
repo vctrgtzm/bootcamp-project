@@ -33,6 +33,11 @@ const GlobalStyle = createGlobalStyle`
             display: block;
         }
     }
+
+    .custom-tooltip {
+        letter-spacing: 1px !important;
+        font-size: 18px !important;
+    }
 `;
 
 export default GlobalStyle;

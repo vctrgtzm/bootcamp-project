@@ -16,18 +16,20 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdjust, faUser, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 import logo from '../../logo.png';
-import React, { useContext, useState, useRef, useEffect, useCallback } from 'react';
+import React, { useContext, useState } from 'react';
 import GlobalContext from '../../state/context';
 import actionTypes from '../../state/actionTypes';
+import ReactTooltip from 'react-tooltip';
+import { themes } from '../../state/themes';
 
 function Header() {
     const [searchVal, setSearchVal] = useState('');
     const {
         youtubeSearch: { setSearchTerm },
         youtubeVideo: { setVideoId },
-        globalDispatch
+        globalDispatch,
+        globalState
     } = useContext(GlobalContext);
-    const themeToggleRef = useRef();
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.target.value) {
@@ -43,26 +45,10 @@ function Header() {
         }
     }
 
-    const handleToggleMouseLeave = useCallback(() => {
-        globalDispatch({ type: actionTypes.TOGGLE_THEME });
-    }, [globalDispatch]);
-
-    const handleToggleMouseEnter = () => {
-        themeToggleRef.current.addEventListener('mouseleave', handleToggleMouseLeave);
-        globalDispatch({ type: actionTypes.TOGGLE_THEME });
-    }
-
     const handleToggleMouseClick = () => {
-        themeToggleRef.current.removeEventListener('mouseleave', handleToggleMouseLeave);
+        globalDispatch({ type: actionTypes.TOGGLE_THEME });
+        ReactTooltip.hide();
     }
-
-    useEffect(() => {
-        const current = themeToggleRef.current;
-
-        return () => {
-            current.removeEventListener('mouseleave', handleToggleMouseLeave);
-        }
-    }, [handleToggleMouseLeave]);
 
     return (
         <StyledHeader role="banner" data-testid="header">
@@ -88,14 +74,17 @@ function Header() {
                     <FontAwesomeIcon icon={faSearch} size="lg" />
                 </SearchButton>
             </HeaderSectionCenter>
-            <HeaderSectionRight className="hidden-mobile">
+            <HeaderSectionRight className="hidden-mobile">                
                 <div
                     role="switch"
                     aria-checked="false"
-                    ref={themeToggleRef}
                     onClick={handleToggleMouseClick}
-                    onMouseEnter={handleToggleMouseEnter}
+                    data-tip={`Switch to ${globalState.theme === themes.dark ? 'light' : 'dark'} theme`}
                 >
+                    <ReactTooltip
+                        place="bottom"
+                        className="custom-tooltip"
+                    />
                     <ThemeToggle
                         icon={faAdjust}
                         size="sm"
