@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import * as useYoutubeSearch from "../../customHooks/useYoutubeSearch/useYoutubeSearch";
 import * as useYoutubeVideo from "../../customHooks/useYoutubeVideo/useYoutubeVideo";
 import * as useYoutubeRelatedVideos from '../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos';
+import * as useYoutubeChannel from '../../customHooks/useYoutubeChannel/useYoutubeChannel';
 import App from './App';
 
 describe('App', () => {
@@ -22,6 +23,13 @@ describe('App', () => {
             videoId: null,
             setVideoId: () => { }
         }));
+
+        jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+            channelResult: { items: [] },
+            channelIsLoading: false,
+            channelError: null
+        }));
+
         render(<App />);
 
         const header = screen.queryByRole('banner');
@@ -45,6 +53,13 @@ describe('App', () => {
                 videoId: null,
                 setVideoId: () => { }
             }));
+
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
+            }));
+
             render(<App />);
 
             const view = screen.queryByRole('main');
@@ -57,6 +72,7 @@ describe('App', () => {
         test('should render a view', () => {
             const mockVideoData = require('../../mocks/youtube-video-details-mock.json');
             const mockRelatedVideosData = require('../../mocks/youtube-related-videos-mock.json');
+            
             jest.spyOn(useYoutubeSearch, 'useYoutubeSearch').mockImplementation(() => ({
                 searchResult: { items: [] },
                 searchIsLoading: false,
@@ -78,6 +94,12 @@ describe('App', () => {
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
                 setMaxRelatedVideosResults: jest.fn()
+            }));
+
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
             }));
 
             render(<App />);

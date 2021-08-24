@@ -3,6 +3,7 @@ import GlobalContext from "../../state/context";
 import Home from "./Home";
 import { themes } from '../../state/themes';
 import { ThemeProvider } from 'styled-components';
+import * as useYoutubeChannel from '../../customHooks/useYoutubeChannel/useYoutubeChannel';
 
 describe('Home', () => {
     describe('when fetching data', () => {
@@ -34,6 +35,12 @@ describe('Home', () => {
     describe('when data has been fetched', () => {
         test('all the items should be rendered', () => {
             const mockSearchResult = require('../../mocks/youtube-videos-mock.json');
+
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
+            }));
 
             render(
                 <GlobalContext.Provider

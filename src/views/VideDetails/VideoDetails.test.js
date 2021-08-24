@@ -4,6 +4,7 @@ import GlobalContext from "../../state/context";
 import VideoDetails from "./VideoDetails";
 import { themes } from '../../state/themes';
 import { ThemeProvider } from 'styled-components';
+import * as useYoutubeChannel from '../../customHooks/useYoutubeChannel/useYoutubeChannel';
 
 const mockVideoData = require('../../mocks/youtube-video-details-mock.json');
 
@@ -43,6 +44,12 @@ describe('VideoDetails', () => {
                 setMaxRelatedVideosResults: () => { }
             }));
 
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
+            }));
+
             render(
                 <GlobalContext.Provider
                     value={{
@@ -73,6 +80,12 @@ describe('VideoDetails', () => {
                 setMaxRelatedVideosResults: () => { }
             }));
 
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
+            }));
+
             render(
                 <GlobalContext.Provider
                     value={{
@@ -101,6 +114,12 @@ describe('VideoDetails', () => {
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
                 setMaxRelatedVideosResults: () => { }
+            }));
+
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
             }));
 
             render(
@@ -134,6 +153,12 @@ describe('VideoDetails', () => {
                 relatedVideosIsLoading: false,
                 relatedVideosError: null,
                 setMaxRelatedVideosResults: () => { }
+            }));
+
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
             }));
 
             render(

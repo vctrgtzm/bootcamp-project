@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import VideoCard from './VideoCard';
 import { themes } from '../../state/themes';
 import { ThemeProvider } from 'styled-components';
+import * as useYoutubeChannel from '../../customHooks/useYoutubeChannel/useYoutubeChannel';
 
 const globalState = { theme: themes.dark }
 
@@ -11,6 +12,13 @@ describe('when clicking a VideoCard', () => {
         const mockData = require('../../mocks/youtube-videos-mock.json');
         const videoItem = mockData.items[0];
         const setVideoId = jest.fn();
+
+        jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+            channelResult: { items: [] },
+            channelIsLoading: false,
+            channelError: null
+        }));
+
         render(
             <ThemeProvider theme={globalState.theme} >
                 <VideoCard
