@@ -27,7 +27,7 @@ function VideoCard({ thumbnail, title, description, videoId, setVideoId, channel
                         title={channelResult?.items[0]?.snippet?.title}
                     />
                 )}
-                <DescriptionContainer className="display-block-mobile">
+                <DescriptionContainer className="display-block-mobile description-container">
                     <p>{description}</p>
                 </DescriptionContainer>
             </VideoItemContainer>

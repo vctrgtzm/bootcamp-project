@@ -37,7 +37,7 @@ export const VideoItemContainer = styled.div`
         }
 
         /*DescriptionContainer*/
-        &:hover > div:nth-of-type(4){            
+        &:hover > .description-container{
             display: block;
         }
     }
