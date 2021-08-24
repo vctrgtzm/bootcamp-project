@@ -7,7 +7,7 @@ import App from './App';
 describe('App', () => {
 
     test('should render the header', () => {
-        jest.spyOn(useYoutubeVideo, 'useYoutubeVideo').mockImplementation(() => ({
+        jest.spyOn(useYoutubeSearch, 'useYoutubeSearch').mockImplementation(() => ({
             searchResult: { items: [] },
             searchIsLoading: false,
             searchError: null,
