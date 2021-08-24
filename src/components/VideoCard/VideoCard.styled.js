@@ -37,8 +37,7 @@ export const VideoItemContainer = styled.div`
         }
 
         /*DescriptionContainer*/
-        &:hover > div:nth-of-type(3){
-            margin: 12px;
+        &:hover > div:nth-of-type(4){            
             display: block;
         }
     }
@@ -51,6 +50,7 @@ export const VideoItemContainer = styled.div`
 
 export const ThumbnailContainer = styled.div`
     min-height: 185px;
+    background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
     background-image: url(${props => props.thumbnail});
     background-size: 110%;
     background-repeat: no-repeat;
@@ -71,6 +71,7 @@ export const DescriptionContainer = styled.div`
     display: none;
     animation: fade 2s ease-out .5s 1 normal forwards;
     max-height: 0px;
+    margin: 12px;
 
     & > p {
         font-size: 16px;
@@ -89,6 +90,5 @@ export const DescriptionContainer = styled.div`
 
     @media(max-width: 768px){
         display: block;
-        margin: 12px;
     }
 `;
