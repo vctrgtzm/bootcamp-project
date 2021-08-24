@@ -351,7 +351,7 @@ describe('Header', () => {
             const themeToggle = screen.queryByRole("switch");
             fireEvent.mouseEnter(themeToggle);
 
-            expect(globalDispatch).toBeCalledWith({ type: actionTypes.SET_THEME });
+            expect(globalDispatch).toBeCalledWith({ type: actionTypes.TOGGLE_THEME });
         });
     });
 
@@ -406,7 +406,7 @@ describe('Header', () => {
             fireEvent.mouseEnter(themeToggle);
             fireEvent.mouseLeave(themeToggle);
 
-            expect(globalDispatch).toBeCalledWith({ type: actionTypes.SET_THEME });
+            expect(globalDispatch).toBeCalledWith({ type: actionTypes.TOGGLE_THEME });
         });
     });
 });

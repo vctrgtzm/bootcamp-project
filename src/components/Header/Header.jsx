@@ -44,12 +44,12 @@ function Header() {
     }
 
     const handleToggleMouseLeave = useCallback(() => {
-        globalDispatch({ type: actionTypes.SET_THEME });
+        globalDispatch({ type: actionTypes.TOGGLE_THEME });
     }, [globalDispatch]);
 
     const handleToggleMouseEnter = () => {
         themeToggleRef.current.addEventListener('mouseleave', handleToggleMouseLeave);
-        globalDispatch({ type: actionTypes.SET_THEME });
+        globalDispatch({ type: actionTypes.TOGGLE_THEME });
     }
 
     const handleToggleMouseClick = () => {

@@ -1,6 +1,6 @@
 
 const actionTypes = {
-    SET_THEME: 'SET_THEME'
+    TOGGLE_THEME: 'TOGGLE_THEME'
 };
 
 export default actionTypes;
