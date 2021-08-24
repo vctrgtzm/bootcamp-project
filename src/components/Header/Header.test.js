@@ -119,11 +119,8 @@ describe('Header', () => {
                 );
 
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-
                 expect(setVideoId).toBeCalledWith(null);
             });
         });
@@ -151,11 +148,8 @@ describe('Header', () => {
                 );
 
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-
                 expect(setSearchTerm).not.toBeCalled();
             });
 
@@ -181,11 +175,8 @@ describe('Header', () => {
                 );
 
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-
                 expect(setVideoId).not.toBeCalled();
             });
         });
@@ -216,9 +207,7 @@ describe('Header', () => {
 
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.click(searchButton);
 
                 expect(setSearchTerm).toBeCalledWith(newSearchTerm);
@@ -247,9 +236,7 @@ describe('Header', () => {
 
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.click(searchButton);
 
                 expect(setVideoId).toBeCalledWith(null);
@@ -280,9 +267,7 @@ describe('Header', () => {
 
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.click(searchButton);
 
                 expect(setSearchTerm).not.toBeCalled();
@@ -311,9 +296,7 @@ describe('Header', () => {
 
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-
                 fireEvent.click(searchButton);
 
                 expect(setVideoId).not.toBeCalled();
