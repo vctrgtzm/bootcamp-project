@@ -6,34 +6,126 @@ import * as useYoutubeChannel from '../../customHooks/useYoutubeChannel/useYoutu
 
 const globalState = { theme: themes.dark }
 
+describe('VideoCard', () => {
 
-describe('when clicking a VideoCard', () => {
-    test('the videoId should set to the id of the video rendered', () => {
-        const mockData = require('../../mocks/youtube-videos-mock.json');
-        const videoItem = mockData.items[0];
-        const setVideoId = jest.fn();
+    describe('when clicking a VideoCard', () => {
+        test('the videoId should set to the id of the video rendered', () => {
+            const mockData = require('../../mocks/youtube-videos-mock.json');
+            const videoItem = mockData.items[0];
+            const setVideoId = jest.fn();
+    
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
+            }));
+    
+            render(
+                <ThemeProvider theme={globalState.theme} >
+                    <VideoCard
+                        thumbnail={videoItem.snippet.thumbnails.default.url}
+                        title={videoItem.snippet.title}
+                        description={videoItem.snippet.description}
+                        videoId={videoItem.id}
+                        setVideoId={setVideoId}
+                    />
+                </ThemeProvider>
+            );
+    
+            const videoCard = screen.queryByRole('listitem');
+            fireEvent.click(videoCard);
+    
+            expect(setVideoId).toHaveBeenCalledWith(videoItem.id);
+        });
+    });
 
-        jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
-            channelResult: { items: [] },
-            channelIsLoading: false,
-            channelError: null
-        }));
+    describe('when the channel is not loading and no error on fetching channel data', () => {
+        test('should render the channel info', () => {
+            const mockData = require('../../mocks/youtube-videos-mock.json');
+            const videoItem = mockData.items[0];
+            const setVideoId = jest.fn();
+    
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: null
+            }));
+    
+            render(
+                <ThemeProvider theme={globalState.theme} >
+                    <VideoCard
+                        thumbnail={videoItem.snippet.thumbnails.default.url}
+                        title={videoItem.snippet.title}
+                        description={videoItem.snippet.description}
+                        videoId={videoItem.id}
+                        setVideoId={setVideoId}
+                    />
+                </ThemeProvider>
+            );
 
-        render(
-            <ThemeProvider theme={globalState.theme} >
-                <VideoCard
-                    thumbnail={videoItem.snippet.thumbnails.default.url}
-                    title={videoItem.snippet.title}
-                    description={videoItem.snippet.description}
-                    videoId={videoItem.id}
-                    setVideoId={setVideoId}
-                />
-            </ThemeProvider>
-        );
+            const channelThumbnail = screen.queryByRole('figure');
+    
+            expect(channelThumbnail).toBeInTheDocument();
+        });
+    });
 
-        const videoCard = screen.queryByRole('listitem');
-        fireEvent.click(videoCard);
+    describe('when the channel is loading', () => {
+        test('the channel info should not be rendered', () => {
+            const mockData = require('../../mocks/youtube-videos-mock.json');
+            const videoItem = mockData.items[0];
+            const setVideoId = jest.fn();
+    
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: true,
+                channelError: null
+            }));
+    
+            render(
+                <ThemeProvider theme={globalState.theme} >
+                    <VideoCard
+                        thumbnail={videoItem.snippet.thumbnails.default.url}
+                        title={videoItem.snippet.title}
+                        description={videoItem.snippet.description}
+                        videoId={videoItem.id}
+                        setVideoId={setVideoId}
+                    />
+                </ThemeProvider>
+            );
 
-        expect(setVideoId).toHaveBeenCalledWith(videoItem.id);
+            const channelThumbnail = screen.queryByRole('figure');
+    
+            expect(channelThumbnail).not.toBeInTheDocument();
+        });
+    });
+
+    describe('when there was an error fetching channel data', () => {
+        test('the channel info should not be rendered', () => {
+            const mockData = require('../../mocks/youtube-videos-mock.json');
+            const videoItem = mockData.items[0];
+            const setVideoId = jest.fn();
+    
+            jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
+                channelResult: { items: [] },
+                channelIsLoading: false,
+                channelError: 'Error fetching'
+            }));
+    
+            render(
+                <ThemeProvider theme={globalState.theme} >
+                    <VideoCard
+                        thumbnail={videoItem.snippet.thumbnails.default.url}
+                        title={videoItem.snippet.title}
+                        description={videoItem.snippet.description}
+                        videoId={videoItem.id}
+                        setVideoId={setVideoId}
+                    />
+                </ThemeProvider>
+            );
+
+            const channelThumbnail = screen.queryByRole('figure');
+    
+            expect(channelThumbnail).not.toBeInTheDocument();
+        });
     });
 });

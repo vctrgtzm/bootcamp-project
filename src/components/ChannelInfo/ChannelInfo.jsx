@@ -3,8 +3,8 @@ import { ChannelInfoContainer, ChannelThumbnail, ChannelTitle } from "./ChannelI
 
 const ChannelInfo = ({ thumbnail, title, thumbnailSize, style }) => {
     return (
-        <ChannelInfoContainer style={style}>
-            <ChannelThumbnail
+        <ChannelInfoContainer role="figure" style={style}>
+            <ChannelThumbnail                
                 thumbnail={thumbnail}
                 thumbnailSize={thumbnailSize ?? '35px'}
             />
