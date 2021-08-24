@@ -5,6 +5,9 @@ import Header from './Header';
 import { themes } from '../../state/themes';
 import actionTypes from '../../state/actionTypes';
 
+const globalState = { theme: themes.dark };
+const globalDispatch = jest.fn();
+
 describe('Header', () => {
     test('should render logo', () => {
         render(
@@ -62,18 +65,21 @@ describe('Header', () => {
     });
 
     describe('when enter is pressed on search input', () => {
+
+        const newSearchTerm = 'react tutorials';
+
         describe('and the length of the search term is greater than 0', () => {
             test('the new search term should be set', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
-                const newSearchTerm = 'react tutorials';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -81,27 +87,29 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-        
-                expect(setSearchTerm).toBeCalledWith(newSearchTerm);    
+
+                expect(setSearchTerm).toBeCalledWith(newSearchTerm);
             });
-    
+
             test('the videoId should be set to null', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = 'react tutorials';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -109,13 +117,13 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-        
+
                 expect(setVideoId).toBeCalledWith(null);
             });
         });
@@ -124,14 +132,16 @@ describe('Header', () => {
             test('the new search term should not be set', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = '';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -139,27 +149,29 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-        
-                expect(setSearchTerm).not.toBeCalled();    
+
+                expect(setSearchTerm).not.toBeCalled();
             });
-    
+
             test('the videoId should not be set to null', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = '';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -167,13 +179,13 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.keyDown(searchInput, { key: 'Enter' });
-        
+
                 expect(setVideoId).not.toBeCalled();
             });
         });
@@ -184,14 +196,16 @@ describe('Header', () => {
             test('the new search term should be set', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = 'react tutorials';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -199,28 +213,30 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.click(searchButton);
-        
+
                 expect(setSearchTerm).toBeCalledWith(newSearchTerm);
             });
-    
+
             test('the video id should be set to null', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = 'react tutorials';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -228,14 +244,14 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.click(searchButton);
-    
+
                 expect(setVideoId).toBeCalledWith(null);
             });
         });
@@ -244,14 +260,16 @@ describe('Header', () => {
             test('the new search term should be set', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = '';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -259,28 +277,30 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.click(searchButton);
-        
+
                 expect(setSearchTerm).not.toBeCalled();
             });
-    
+
             test('the video id should be set to null', () => {
                 const setSearchTerm = jest.fn();
                 const setVideoId = jest.fn();
-        
+
                 const newSearchTerm = '';
-        
+
                 render(
                     <GlobalContext.Provider
                         value={{
                             youtubeSearch: { setSearchTerm },
-                            youtubeVideo: { setVideoId }
+                            youtubeVideo: { setVideoId },
+                            globalState,
+                            globalDispatch
                         }}
                     >
                         <ThemeProvider theme={themes.dark}>
@@ -288,112 +308,33 @@ describe('Header', () => {
                         </ThemeProvider>
                     </GlobalContext.Provider>
                 );
-        
+
                 const searchButton = screen.queryByRole('button');
                 const searchInput = screen.queryByPlaceholderText(/search.../i);
-        
+
                 fireEvent.change(searchInput, { target: { value: newSearchTerm } });
-        
+
                 fireEvent.click(searchButton);
-    
+
                 expect(setVideoId).not.toBeCalled();
             });
         });
     });
 
-    describe('when mouse enter the theme toggle', () => {
 
-        test('mouseleave event listener should be added', () => {
-            const setSearchTerm = jest.fn();
-            const setVideoId = jest.fn();
-
-            render(
-                <GlobalContext.Provider
-                    value={{
-                        globalDispatch: jest.fn(),
-                        youtubeSearch: { setSearchTerm },
-                        youtubeVideo: { setVideoId }
-                    }}
-                >
-                    <ThemeProvider theme={themes.dark}>
-                        <Header />
-                    </ThemeProvider>
-                </GlobalContext.Provider>
-            );
-
-            const themeToggle = screen.queryByRole("switch");
-            themeToggle.addEventListener = jest.fn();
-            fireEvent.mouseEnter(themeToggle);
-
-            expect(themeToggle.addEventListener).toBeCalledWith('mouseleave', expect.any(Function));
-
-        });
-
-        test('global dispatch should be called in order to change the theme', () => {
-            const setSearchTerm = jest.fn();
-            const setVideoId = jest.fn();
-            const globalDispatch = jest.fn();
-
-            render(
-                <GlobalContext.Provider
-                    value={{
-                        globalDispatch: globalDispatch,
-                        youtubeSearch: { setSearchTerm },
-                        youtubeVideo: { setVideoId }
-                    }}
-                >
-                    <ThemeProvider theme={themes.dark}>
-                        <Header />
-                    </ThemeProvider>
-                </GlobalContext.Provider>
-            );
-
-            const themeToggle = screen.queryByRole("switch");
-            fireEvent.mouseEnter(themeToggle);
-
-            expect(globalDispatch).toBeCalledWith({ type: actionTypes.TOGGLE_THEME });
-        });
-    });
 
     describe('when click on theme toggle', () => {
-        test('mouseleave event listener should be removed', () => {
-            const setSearchTerm = jest.fn();
-            const setVideoId = jest.fn();
-
-            render(
-                <GlobalContext.Provider
-                    value={{
-                        globalDispatch: jest.fn(),
-                        youtubeSearch: { setSearchTerm },
-                        youtubeVideo: { setVideoId }
-                    }}
-                >
-                    <ThemeProvider theme={themes.dark}>
-                        <Header />
-                    </ThemeProvider>
-                </GlobalContext.Provider>
-            );
-
-            const themeToggle = screen.queryByRole("switch");
-            themeToggle.removeEventListener = jest.fn();
-            fireEvent.click(themeToggle);
-
-            expect(themeToggle.removeEventListener).toBeCalledWith('mouseleave', expect.any(Function));
-        });
-    });
-
-    describe('when mouse leave theme toggle without having clicked', () => {
         test('global dispatch should be called in order to change the theme', () => {
             const setSearchTerm = jest.fn();
             const setVideoId = jest.fn();
-            const globalDispatch = jest.fn();
 
             render(
                 <GlobalContext.Provider
                     value={{
-                        globalDispatch: globalDispatch,
                         youtubeSearch: { setSearchTerm },
-                        youtubeVideo: { setVideoId }
+                        youtubeVideo: { setVideoId },
+                        globalState,
+                        globalDispatch
                     }}
                 >
                     <ThemeProvider theme={themes.dark}>
@@ -403,8 +344,7 @@ describe('Header', () => {
             );
 
             const themeToggle = screen.queryByRole("switch");
-            fireEvent.mouseEnter(themeToggle);
-            fireEvent.mouseLeave(themeToggle);
+            fireEvent.click(themeToggle);
 
             expect(globalDispatch).toBeCalledWith({ type: actionTypes.TOGGLE_THEME });
         });
