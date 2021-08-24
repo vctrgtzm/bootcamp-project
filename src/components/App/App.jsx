@@ -51,7 +51,7 @@ function App() {
                 <GlobalStyle />
                 <Header />
                 <main>
-                    {videoId == null ? (
+                    {!videoId ? (
                         <Home />
                     ) : (
                         <VideoDetails />
