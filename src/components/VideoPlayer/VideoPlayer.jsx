@@ -9,8 +9,12 @@ import { BackToVideosButton, IFameContainer, VideoContainer, VideoDetailsContain
 
 
 const VideoPlayer = () => {
-    const { youtubeVideo } = useContext(GlobalContext);
-    const { videoData, setVideoId } = youtubeVideo;
+    const {
+        youtubeVideo: {
+            videoData,
+            setVideoId
+        }
+    } = useContext(GlobalContext);
     const videoItem = videoData?.items[0];
     const {
         channelResult,

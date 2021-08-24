@@ -8,8 +8,13 @@ import { VideoDetailsViewContainer } from "./VideoDetails.styled";
 
 
 function VideoDetails() {
-    const { youtubeVideo } = useContext(GlobalContext);
-    const { videoData, videoIsLoading, videoError } = youtubeVideo;
+    const {
+        youtubeVideo: {
+            videoData,
+            videoIsLoading,
+            videoError
+        }
+    } = useContext(GlobalContext);
 
     const videoItem = videoData?.items[0];
     const {

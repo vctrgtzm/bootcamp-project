@@ -4,8 +4,12 @@ import { useContext } from 'react';
 import GlobalContext from '../../state/context';
 
 function Home() {
-    const { youtubeSearch } = useContext(GlobalContext);
-    const { searchIsLoading, searchError } = youtubeSearch;
+    const {
+        youtubeSearch: {
+            searchIsLoading,
+            searchError
+        }
+    } = useContext(GlobalContext);
 
     if (searchIsLoading) {
         return <LoadingIndicator role="progressbar" />

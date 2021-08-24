@@ -22,9 +22,11 @@ import actionTypes from '../../state/actionTypes';
 
 function Header() {
     const [searchVal, setSearchVal] = useState('');
-    const { youtubeSearch, youtubeVideo, globalDispatch } = useContext(GlobalContext);
-    const { setSearchTerm } = youtubeSearch;
-    const { setVideoId } = youtubeVideo;
+    const {
+        youtubeSearch: { setSearchTerm },
+        youtubeVideo: { setVideoId },
+        globalDispatch
+    } = useContext(GlobalContext);
     const themeToggleRef = useRef();
 
     const handleKeyDown = (e) => {
@@ -56,7 +58,7 @@ function Header() {
 
     useEffect(() => {
         const current = themeToggleRef.current;
-        
+
         return () => {
             current.removeEventListener('mouseleave', handleToggleMouseLeave);
         }

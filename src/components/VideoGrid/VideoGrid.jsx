@@ -5,9 +5,13 @@ import { GridContainer } from "./VideoGrid.styled";
 
 
 function VideoGrid() {
-    const { youtubeSearch, youtubeVideo } = useContext(GlobalContext);
-    const { items } = youtubeSearch.searchResult;
-    const { setVideoId } = youtubeVideo;
+    const {
+        youtubeSearch: {
+            searchResult: { items }
+        },
+        youtubeVideo: { setVideoId }
+    } = useContext(GlobalContext);
+
 
     return (
         <GridContainer>
