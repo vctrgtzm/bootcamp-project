@@ -17,7 +17,7 @@ function VideoCard({ thumbnail, title, description, videoId, setVideoId, channel
                 />
                 <LoadingIndicator />
                 <h2>{title}</h2>
-                {channelIsLoading || channelError ? undefined : (
+                {!channelIsLoading && !channelError && (
                     <ChannelInfo
                         thumbnail={
                             channelResult?.items[0]?.snippet?.thumbnails?.default?.url ??

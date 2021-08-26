@@ -32,7 +32,7 @@ const VideoPlayer = () => {
                 <IFameContainer dangerouslySetInnerHTML={{ __html: videoItem.player.embedHtml }} />
             </VideoContainer>
             <h2>{videoItem.snippet.title}</h2>
-            {channelIsLoading || channelError ? undefined : (
+            {!channelIsLoading && !channelError && (
                 <ChannelInfo
                     thumbnail={
                         channelResult?.items[0]?.snippet?.thumbnails?.default?.url ??

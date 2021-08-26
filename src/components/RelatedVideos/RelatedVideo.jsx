@@ -26,7 +26,7 @@ const RelatedVideo = ({ item }) => {
             />
             <TitleAndChannelContainer>
                 <p>{item.snippet.title}</p>
-                {channelIsLoading || channelError ? undefined : (
+                {!channelIsLoading && !channelError && (
                     <ChannelInfo
                         thumbnail={
                             channelResult?.items[0]?.snippet?.thumbnails?.default?.url ??
