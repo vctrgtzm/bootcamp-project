@@ -6,11 +6,11 @@ import * as useYoutubeChannel from '../../customHooks/useYoutubeChannel/useYoutu
 import { ThemeProvider } from 'styled-components';
 
 const globalState = { theme: themes.dark }
+const videoDataMock = require('../../mocks/youtube-video-details-mock.json');
+const setVideoId = jest.fn();
 
 describe('VideoPlayer', () => {
     test('should set the video id to null when clicking "Back to videos" button', () => {
-        const videoDataMock = require('../../mocks/youtube-video-details-mock.json');
-        const setVideoId = jest.fn();
 
         jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
             channelResult: { items: [] },
@@ -42,8 +42,6 @@ describe('VideoPlayer', () => {
 
     describe('when the channel is not loading and no error on fetching channel data', () => {
         test('should render the channel info', () => {
-            const videoDataMock = require('../../mocks/youtube-video-details-mock.json');
-            const setVideoId = jest.fn();
 
             jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
                 channelResult: { items: [] },
@@ -67,15 +65,13 @@ describe('VideoPlayer', () => {
             );
 
             const channelThumbnail = screen.queryByRole('figure');
-    
+
             expect(channelThumbnail).toBeInTheDocument();
         });
     });
 
     describe('when the channel is loading', () => {
         test('should not render the channel info', () => {
-            const videoDataMock = require('../../mocks/youtube-video-details-mock.json');
-            const setVideoId = jest.fn();
 
             jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
                 channelResult: { items: [] },
@@ -99,15 +95,13 @@ describe('VideoPlayer', () => {
             );
 
             const channelThumbnail = screen.queryByRole('figure');
-    
+
             expect(channelThumbnail).not.toBeInTheDocument();
         });
     });
 
     describe('when there was an error fetching channel data', () => {
         test('should not render the channel info', () => {
-            const videoDataMock = require('../../mocks/youtube-video-details-mock.json');
-            const setVideoId = jest.fn();
 
             jest.spyOn(useYoutubeChannel, 'useYoutubeChannel').mockImplementation(() => ({
                 channelResult: { items: [] },
@@ -131,7 +125,7 @@ describe('VideoPlayer', () => {
             );
 
             const channelThumbnail = screen.queryByRole('figure');
-    
+
             expect(channelThumbnail).not.toBeInTheDocument();
         });
     });

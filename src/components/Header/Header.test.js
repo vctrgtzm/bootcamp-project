@@ -7,6 +7,8 @@ import actionTypes from '../../state/actionTypes';
 
 const globalState = { theme: themes.dark };
 const globalDispatch = jest.fn();
+const setSearchTerm = jest.fn();
+const setVideoId = jest.fn();
 
 describe('Header', () => {
     test('should render logo', () => {
@@ -70,8 +72,6 @@ describe('Header', () => {
 
         describe('and the length of the search term is greater than 0', () => {
             test('the new search term should be set', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 render(
                     <GlobalContext.Provider
@@ -98,8 +98,6 @@ describe('Header', () => {
             });
 
             test('the videoId should be set to null', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = 'react tutorials';
 
@@ -127,8 +125,6 @@ describe('Header', () => {
 
         describe('and the length of the search term is 0', () => {
             test('the new search term should not be set', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = '';
 
@@ -154,8 +150,6 @@ describe('Header', () => {
             });
 
             test('the videoId should not be set to null', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = '';
 
@@ -185,8 +179,6 @@ describe('Header', () => {
     describe('when search button is clicked', () => {
         describe('and the length of the search term is grater than 0', () => {
             test('the new search term should be set', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = 'react tutorials';
 
@@ -214,8 +206,6 @@ describe('Header', () => {
             });
 
             test('the video id should be set to null', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = 'react tutorials';
 
@@ -245,8 +235,6 @@ describe('Header', () => {
 
         describe('and the length of the search term is 0', () => {
             test('the new search term should be set', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = '';
 
@@ -274,8 +262,6 @@ describe('Header', () => {
             });
 
             test('the video id should be set to null', () => {
-                const setSearchTerm = jest.fn();
-                const setVideoId = jest.fn();
 
                 const newSearchTerm = '';
 
@@ -308,8 +294,7 @@ describe('Header', () => {
 
     describe('when click on theme toggle', () => {
         test('global dispatch should be called in order to change the theme', () => {
-            const setSearchTerm = jest.fn();
-            const setVideoId = jest.fn();
+
 
             render(
                 <GlobalContext.Provider
