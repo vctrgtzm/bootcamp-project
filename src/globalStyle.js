@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: ${props => props.theme.body.backgroundColor};
-        overflow-x: hidden !important;
     }
 
     ::placeholder {

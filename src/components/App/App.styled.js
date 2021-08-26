@@ -13,14 +13,14 @@ export const LoadingIndicator = styled.div`
 
     @keyframes loading {
         0% {
-            left: -10%;
+            left: 0%;
             width: 0%;
         }
         50% {
             width: 30%;
         }
         100% {
-            left: 110%;
+            left: 100%;
             width: 0%;
         }
     }
