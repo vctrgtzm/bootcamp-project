@@ -73,7 +73,7 @@ export const Input = styled.input`
 export const Button = styled.button`
     font: bold 24px ${props => props.theme.fontFam}, arial;
     width: 100%;
-    background-color: ${props => props.theme.header.searchInputFocusBackgroundColor};;
+    background-color: ${props => props.theme.header.searchInputFocusBackgroundColor};
     border: 1px solid ${props => props.theme.header.searchInputBorderColor};
     padding: 4px 8px;
     border-radius: 10px;
@@ -84,4 +84,14 @@ export const Button = styled.button`
     &:hover{
         background-color: transparent;
     }
+`;
+
+export const ErrorContainer = styled.div`
+    font: normal 20px ${props => props.theme.fontFam}, arial;
+    color: white;
+    padding: 2px;
+    width: 100%;
+    background-color: #e63946;
+    border-radius: 10px;
+    text-align: center;
 `;

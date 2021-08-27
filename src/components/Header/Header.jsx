@@ -10,7 +10,8 @@ import {
     NavigationItems,
     NavigationItem,
     MenuIconContainer,
-    SearchButton
+    SearchButton,
+    LogoutButton
 } from './Header.styled';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,6 +28,7 @@ import LoginModal from '../LoginModal/LoginModal';
 function Header() {
     const [searchVal, setSearchVal] = useState('');
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showLogout, setShowLogout] = useState(false);
     const history = useHistory();
     const {
         youtubeSearch: { setSearchTerm },
@@ -51,6 +53,19 @@ function Header() {
     const handleToggleMouseClick = () => {
         globalDispatch({ type: actionTypes.TOGGLE_THEME });
         ReactTooltip.hide();
+    }
+
+    const handleAvatarClick = () => {
+        if (globalState.user) {
+            setShowLogout(prevState => !prevState);
+        } else {
+            setShowLoginModal(true);
+        }
+    }
+
+    const handleLogOut = () => {
+        setShowLogout(prevState => !prevState);
+        globalDispatch({ type: actionTypes.USER_LOGOUT });
     }
 
     return (
@@ -94,10 +109,16 @@ function Header() {
                             size="sm"
                         />
                     </div>
-                    <AvatarContainer role="figure" onClick={() => setShowLoginModal(true)}>
-                        <FontAwesomeIcon icon={faUser} size="sm" />
+                    <AvatarContainer
+                        role="figure"
+                        onClick={handleAvatarClick}
+                        avatarUrl={globalState?.user?.avatarUrl}
+                    >
+                        {!globalState?.user?.avatarUrl && <FontAwesomeIcon icon={faUser} size="sm" />}
+
                     </AvatarContainer>
                 </HeaderSectionRight>
+                {showLogout && <LogoutButton onClick={handleLogOut}>Logout</LogoutButton>}
             </StyledHeader>
             <LoginModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
         </>

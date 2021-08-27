@@ -120,11 +120,16 @@ export const AvatarContainer = styled.div`
     height: 45px;
     border-radius: 50%;
     background-color: ${props => props.theme.header.avatarBackgroundColor};
+    background-image: url(${props => props.avatarUrl});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     margin-left: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: ${props => props.theme.header.avatarIconColor};
+    position: relative;
 
     &:hover{
         cursor: pointer;
@@ -137,5 +142,24 @@ export const ThemeToggle = styled(FontAwesomeIcon)`
     &:hover{
         cursor: pointer;
         transform: rotate(180deg);
+    }
+`;
+
+export const LogoutButton = styled.button`
+    position: absolute;
+    width: 65px;
+    font: bold 20px ${props => props.theme.fontFam}, arial;
+    top: 60px;
+    right: 20px;
+    background-color: ${props => props.theme.header.backgroundColor};
+    border: 1px solid ${props => props.theme.header.searchInputBorderColor};
+    padding: 4px 8px;
+    border-radius: 10px;
+    color: ${props => props.theme.fontColor};
+    cursor: pointer;
+    transition: opacity .3s linear;
+
+    &:hover {
+        opacity: .8;
     }
 `;
