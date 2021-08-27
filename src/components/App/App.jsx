@@ -1,6 +1,4 @@
-
 import { useYoutubeSearch } from "../../customHooks/useYoutubeSearch/useYoutubeSearch";
-import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVideo'
 import Home from "../../views/Home";
 import VideoDetails from "../../views/VideDetails";
 import Header from "../Header";
@@ -10,6 +8,7 @@ import GlobalContext from "../../state/context";
 import { themes } from "../../state/themes";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from '../../globalStyle';
+import { Route, Switch } from "react-router-dom";
 
 function App() {
     const {
@@ -19,43 +18,33 @@ function App() {
         setSearchTerm
     } = useYoutubeSearch();
 
-    const {
-        videoData,
-        videoIsLoading,
-        videoError,
-        videoId,
-        setVideoId
-    } = useYoutubeVideo();
-
     const [globalState, globalDispatch] = useReducer(globalReducer, { theme: themes.dark });
 
+    const globalContextValue = {
+        globalState,
+        globalDispatch,
+        youtubeSearch: {
+            searchResult,
+            searchIsLoading,
+            searchError,
+            setSearchTerm
+        }
+    };
+
     return (
-        <GlobalContext.Provider value={{
-            globalState,
-            globalDispatch,
-            youtubeSearch: {
-                searchResult,
-                searchIsLoading,
-                searchError,
-                setSearchTerm
-            },
-            youtubeVideo: {
-                videoData,
-                videoIsLoading,
-                videoError,
-                videoId,
-                setVideoId
-            }
-        }}>
+        <GlobalContext.Provider value={globalContextValue}>
             <ThemeProvider theme={globalState.theme}>
                 <GlobalStyle />
                 <Header />
                 <main>
-                    {!videoId ? (
-                        <Home />
-                    ) : (
-                        <VideoDetails />
-                    )}
+                    <Switch>
+                        <Route path="/" exact>
+                            <Home />
+                        </Route>
+                        <Route path="/video/:id">
+                            <VideoDetails />
+                        </Route>
+                    </Switch>
                 </main>
             </ThemeProvider>
         </GlobalContext.Provider>

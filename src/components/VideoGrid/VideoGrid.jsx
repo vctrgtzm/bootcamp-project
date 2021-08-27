@@ -8,8 +8,7 @@ function VideoGrid() {
     const {
         youtubeSearch: {
             searchResult: { items }
-        },
-        youtubeVideo: { setVideoId }
+        }
     } = useContext(GlobalContext);
 
 
@@ -23,7 +22,6 @@ function VideoGrid() {
                         title={item.snippet.title}
                         description={item.snippet.description}
                         videoId={item.id.videoId}
-                        setVideoId={setVideoId}
                         channelId={item.snippet.channelId}
                     />
                 );

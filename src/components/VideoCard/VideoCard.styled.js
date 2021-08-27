@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const VideoRelativeContiner = styled.div`
@@ -7,7 +8,7 @@ export const VideoRelativeContiner = styled.div`
     justify-content: center;
 `;
 
-export const VideoItemContainer = styled.div`    
+export const VideoItemContainer = styled(Link)`
     border-radius: 10px;
     overflow: hidden;
     background-color: ${props => props.theme.videoCards.backgroundColor};
@@ -18,6 +19,7 @@ export const VideoItemContainer = styled.div`
     transition: background-color .3s ease-out, min-width .3s ease-out;
     min-height: 100%;
     min-width: 100%;
+    text-decoration: none;
 
     @media(min-width: 768px){
         &:hover {

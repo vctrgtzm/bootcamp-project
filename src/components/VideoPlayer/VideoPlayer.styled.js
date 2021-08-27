@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const VideoDetailsContainer = styled.div`
@@ -20,7 +21,7 @@ export const VideoContainer = styled.div`
     }
 `;
 
-export const BackToVideosButton = styled.button`
+export const BackToVideosButton = styled(Link)`
     background-color: #00B4D8;
     font: bold 20px ${props => props.theme.fontFam}, arial;
     padding: 12px;
@@ -34,6 +35,7 @@ export const BackToVideosButton = styled.button`
     cursor: pointer;
     z-index: 10;
     border-radius: 10px;
+    text-decoration: none;
 
     &:hover{
         color:white;

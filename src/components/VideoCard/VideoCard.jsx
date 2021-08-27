@@ -2,7 +2,7 @@ import { VideoItemContainer, ThumbnailContainer, VideoRelativeContiner, Descript
 import { useYoutubeChannel } from '../../customHooks/useYoutubeChannel/useYoutubeChannel'
 import ChannelInfo from '../ChannelInfo/ChannelInfo';
 
-function VideoCard({ thumbnail, title, description, videoId, setVideoId, channelId }) {
+function VideoCard({ thumbnail, title, description, videoId, channelId }) {
     const {
         channelResult,
         channelIsLoading,
@@ -11,7 +11,7 @@ function VideoCard({ thumbnail, title, description, videoId, setVideoId, channel
 
     return (
         <VideoRelativeContiner>
-            <VideoItemContainer role="listitem" onClick={() => setVideoId(videoId)}>
+            <VideoItemContainer to={`/video/${videoId}`} role="listitem">
                 <ThumbnailContainer
                     thumbnail={thumbnail}
                 />

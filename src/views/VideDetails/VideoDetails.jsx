@@ -1,21 +1,18 @@
-import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { ErrorContainer, LoadingIndicator } from "../../components/App/App.styled";
 import RelatedVideos from "../../components/RelatedVideos";
 import VideoPlayer from "../../components/VideoPlayer";
 import { useYoutubeRelatedVideos } from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
-import GlobalContext from "../../state/context";
 import { VideoDetailsViewContainer } from "./VideoDetails.styled";
-
+import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVideo'
 
 function VideoDetails() {
+    const { id } = useParams();
     const {
-        youtubeVideo: {
-            videoData,
-            videoIsLoading,
-            videoError
-        }
-    } = useContext(GlobalContext);
-
+        videoData,
+        videoIsLoading,
+        videoError
+    } = useYoutubeVideo(id);
     const videoItem = videoData?.items[0];
     const {
         relatedVideosResult,
@@ -37,7 +34,7 @@ function VideoDetails() {
 
     return (
         <VideoDetailsViewContainer>
-            <VideoPlayer />
+            <VideoPlayer videoData={videoData} />
             <RelatedVideos
                 relatedVideosResult={relatedVideosResult}
             />

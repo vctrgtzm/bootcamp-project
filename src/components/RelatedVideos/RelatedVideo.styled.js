@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const RelatedVideoContainer = styled.div`
+export const RelatedVideoContainer = styled(Link)`
     background-color: ${props => props.theme.videoCards.backgroundColor};
     width: 100%;
     display: flex;
@@ -15,6 +16,7 @@ export const RelatedVideoContainer = styled.div`
     color: ${props => props.theme.fontColor};
     transition: background-color .3s ease-out;
     flex-shrink: 0;
+    text-decoration: none;
 
     &:hover {
         background-color: ${props => props.theme.videoCards.backgroundColorHover};

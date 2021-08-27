@@ -1,11 +1,8 @@
-import { useContext } from "react";
 import { useYoutubeChannel } from "../../customHooks/useYoutubeChannel/useYoutubeChannel";
-import GlobalContext from "../../state/context";
 import ChannelInfo from "../ChannelInfo/ChannelInfo";
 import { RelatedVideoContainer, ThumbnailContainer, TitleAndChannelContainer } from "./RelatedVideo.styled";
 
 const RelatedVideo = ({ item }) => {
-    const { youtubeVideo: { setVideoId } } = useContext(GlobalContext);
     const {
         channelResult,
         channelIsLoading,
@@ -14,8 +11,8 @@ const RelatedVideo = ({ item }) => {
 
     return (
         <RelatedVideoContainer
+            to={`/video/${item.id.videoId}`}
             role="listitem"
-            onClick={() => setVideoId(item.id.videoId)}            
         >
             <ThumbnailContainer
                 thumbnail={

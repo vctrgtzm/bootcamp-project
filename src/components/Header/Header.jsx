@@ -21,27 +21,28 @@ import GlobalContext from '../../state/context';
 import actionTypes from '../../state/actionTypes';
 import ReactTooltip from 'react-tooltip';
 import { themes } from '../../state/themes';
+import { useHistory } from 'react-router-dom';
 
 function Header() {
     const [searchVal, setSearchVal] = useState('');
+    const history = useHistory();
     const {
         youtubeSearch: { setSearchTerm },
-        youtubeVideo: { setVideoId },
         globalDispatch,
         globalState
     } = useContext(GlobalContext);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.target.value) {
-            setVideoId(null);
             setSearchTerm(e.target.value);
+            history.push("/");
         }
     }
 
     const handleSearchButtonClick = () => {
         if (searchVal.length > 0) {
-            setVideoId(null);
             setSearchTerm(searchVal);
+            history.push("/");
         }
     }
 
@@ -74,7 +75,7 @@ function Header() {
                     <FontAwesomeIcon icon={faSearch} size="lg" />
                 </SearchButton>
             </HeaderSectionCenter>
-            <HeaderSectionRight className="hidden-mobile">                
+            <HeaderSectionRight className="hidden-mobile">
                 <div
                     role="switch"
                     aria-checked="false"
