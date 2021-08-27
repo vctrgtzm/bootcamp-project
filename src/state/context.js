@@ -15,7 +15,8 @@ const GlobalContext = createContext({
         videoError: null,
         videoId: null,
         setVideoId: () => {}
-    }
+    },
+    setShowLoginModal: () => {}
 });
 
 export default GlobalContext;

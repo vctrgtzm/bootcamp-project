@@ -23,17 +23,16 @@ import actionTypes from '../../state/actionTypes';
 import ReactTooltip from 'react-tooltip';
 import { themes } from '../../state/themes';
 import { useHistory } from 'react-router-dom';
-import LoginModal from '../LoginModal/LoginModal';
 
 function Header() {
     const [searchVal, setSearchVal] = useState('');
-    const [showLoginModal, setShowLoginModal] = useState(false);
     const [showLogout, setShowLogout] = useState(false);
     const history = useHistory();
     const {
         youtubeSearch: { setSearchTerm },
         globalDispatch,
-        globalState
+        globalState,
+        setShowLoginModal
     } = useContext(GlobalContext);
 
     const handleKeyDown = (e) => {
@@ -120,7 +119,6 @@ function Header() {
                 </HeaderSectionRight>
                 {showLogout && <LogoutButton onClick={handleLogOut}>Logout</LogoutButton>}
             </StyledHeader>
-            <LoginModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
         </>
     );
 

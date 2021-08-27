@@ -3,14 +3,16 @@ import Home from "../../views/Home";
 import VideoDetails from "../../views/VideDetails";
 import Header from "../Header";
 import globalReducer from "../../state/reducer";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import GlobalContext from "../../state/context";
 import { themes } from "../../state/themes";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from '../../globalStyle';
 import { Route, Switch } from "react-router-dom";
+import LoginModal from '../LoginModal';
 
 function App() {
+    const [showLoginModal, setShowLoginModal] = useState(false);
     const {
         searchResult,
         searchIsLoading,
@@ -28,7 +30,8 @@ function App() {
             searchIsLoading,
             searchError,
             setSearchTerm
-        }
+        },
+        setShowLoginModal
     };
 
     return (
@@ -46,6 +49,8 @@ function App() {
                         </Route>
                     </Switch>
                 </main>
+
+                <LoginModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
             </ThemeProvider>
         </GlobalContext.Provider>
     );
