@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const VideoDetailsContainer = styled.div`
     flex-basis: 60%;
     position: relative;
-    font: bold 24px 'Amatic SC', arial;
-    color: #03045E;
+    font: bold 24px ${props => props.theme.fontFam}, arial;
+    color: ${props => props.theme.fontColor};
     padding: 30px 0px 12px;
 
     & > h2, & > p {
@@ -22,7 +22,7 @@ export const VideoContainer = styled.div`
 
 export const BackToVideosButton = styled.button`
     background-color: #00B4D8;
-    font: bold 20px 'Amatic SC', arial;
+    font: bold 20px ${props => props.theme.fontFam}, arial;
     padding: 12px;
     border: none;
     color: #E9ECEF;

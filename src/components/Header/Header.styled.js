@@ -1,12 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
     position: fixed;
-    background-color: #DEE2E6;
+    background-color: ${props => props.theme.header.backgroundColor};
     height: 70px;
     width: 100%;
-    font: bold 28px 'Amatic SC', arial;
-    color: #03045E;
+    font: bold 28px ${props => props.theme.fontFam}, arial;
+    color: ${props => props.theme.fontColor};
     display: flex;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
     padding: 0 30px;
@@ -72,24 +73,24 @@ export const NavigationItem = styled.div`
     transition: color .2s ease-out;
 
     &:hover{
-        color: #48cae4;
+        color: ${props => props.theme.fontColorHover};
         cursor: pointer;
     }
 `;
 
 export const SearchInput = styled.input.attrs({ type: 'text' })`
-    font: bold 24px 'Amatic SC', arial;
+    font: bold 24px ${props => props.theme.fontFam}, arial;
     background-color: transparent;
-    border: 1px solid #adb5bd;
+    border: 1px solid ${props => props.theme.header.searchInputBorderColor};
     border-radius: 10px 0px 0px 10px;
     padding: 4px 8px;
-    color: #03045E;
+    color: ${props => props.theme.fontColor};
     width: 70%;
     min-width: 200px;
     transition: background-color .2s ease-out;
 
     &:focus{
-        background-color: #e9ecef;
+        background-color: ${props => props.theme.header.searchInputFocusBackgroundColor};
     }
 
     @media(max-width: 768px){
@@ -102,14 +103,14 @@ export const SearchButton = styled.button`
     padding: 10px;
     border-radius: 0px 10px 10px 0px;
     background-color: transparent;
-    border: 1px solid #adb5bd;
+    border: 1px solid ${props => props.theme.header.searchInputBorderColor};
     border-left: none;
-    color: #03045E;
+    color: ${props => props.theme.fontColor};
     cursor: pointer;
     transition: background-color .2s ease-out;  
 
     &:hover, &:focus{
-        background-color: #e9ecef;
+        background-color: ${props => props.theme.header.searchInputFocusBackgroundColor};
     }
 
 `;
@@ -118,21 +119,23 @@ export const AvatarContainer = styled.div`
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: #48CAE4;
+    background-color: ${props => props.theme.header.avatarBackgroundColor};
     margin-left: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #90E0EF;
+    color: ${props => props.theme.header.avatarIconColor};
 
     &:hover{
         cursor: pointer;
     }
 `;
 
-export const ThemeToggleContainer = styled.div`
+export const ThemeToggle = styled(FontAwesomeIcon)`
+    transition: transform .2s linear;
 
     &:hover{
         cursor: pointer;
+        transform: rotate(180deg);
     }
 `;

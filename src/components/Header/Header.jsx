@@ -6,7 +6,7 @@ import {
     HeaderSectionRight,
     SearchInput,
     AvatarContainer,
-    ThemeToggleContainer,
+    ThemeToggle,
     NavigationItems,
     NavigationItem,
     MenuIconContainer,
@@ -15,12 +15,21 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdjust, faUser, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
-
 import logo from '../../logo.png';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import GlobalContext from '../../state/context';
+import actionTypes from '../../state/actionTypes';
+import ReactTooltip from 'react-tooltip';
+import { themes } from '../../state/themes';
 
-function Header({ setSearchTerm, setVideoId }) {
+function Header() {
     const [searchVal, setSearchVal] = useState('');
+    const {
+        youtubeSearch: { setSearchTerm },
+        youtubeVideo: { setVideoId },
+        globalDispatch,
+        globalState
+    } = useContext(GlobalContext);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter' && e.target.value) {
@@ -36,6 +45,11 @@ function Header({ setSearchTerm, setVideoId }) {
         }
     }
 
+    const handleToggleMouseClick = () => {
+        globalDispatch({ type: actionTypes.TOGGLE_THEME });
+        ReactTooltip.hide();
+    }
+
     return (
         <StyledHeader role="banner" data-testid="header">
             <HeaderSectionLeft>
@@ -49,7 +63,7 @@ function Header({ setSearchTerm, setVideoId }) {
                 </MenuIconContainer>
             </HeaderSectionLeft>
             <HeaderSectionCenter role="search">
-                <SearchInput                    
+                <SearchInput
                     type="text"
                     placeholder="Search..."
                     value={searchVal}
@@ -60,10 +74,22 @@ function Header({ setSearchTerm, setVideoId }) {
                     <FontAwesomeIcon icon={faSearch} size="lg" />
                 </SearchButton>
             </HeaderSectionCenter>
-            <HeaderSectionRight className="hidden-mobile">
-                <ThemeToggleContainer role="switch">
-                    <FontAwesomeIcon icon={faAdjust} size="sm" />
-                </ThemeToggleContainer>
+            <HeaderSectionRight className="hidden-mobile">                
+                <div
+                    role="switch"
+                    aria-checked="false"
+                    onClick={handleToggleMouseClick}
+                    data-tip={`Switch to ${globalState.theme === themes.dark ? 'light' : 'dark'} theme`}
+                >
+                    <ReactTooltip
+                        place="bottom"
+                        className="custom-tooltip"
+                    />
+                    <ThemeToggle
+                        icon={faAdjust}
+                        size="sm"
+                    />
+                </div>
                 <AvatarContainer role="figure">
                     <FontAwesomeIcon icon={faUser} size="sm" />
                 </AvatarContainer>

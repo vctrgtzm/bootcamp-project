@@ -1,11 +1,21 @@
+import { useContext } from "react";
 import { ErrorContainer, LoadingIndicator } from "../../components/App/App.styled";
 import RelatedVideos from "../../components/RelatedVideos";
 import VideoPlayer from "../../components/VideoPlayer";
 import { useYoutubeRelatedVideos } from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
+import GlobalContext from "../../state/context";
 import { VideoDetailsViewContainer } from "./VideoDetails.styled";
 
 
-function VideoDetails({ videoData, videoIsLoading, videoError, setVideoId }) {
+function VideoDetails() {
+    const {
+        youtubeVideo: {
+            videoData,
+            videoIsLoading,
+            videoError
+        }
+    } = useContext(GlobalContext);
+
     const videoItem = videoData?.items[0];
     const {
         relatedVideosResult,
@@ -13,7 +23,7 @@ function VideoDetails({ videoData, videoIsLoading, videoError, setVideoId }) {
         relatedVideosError,
     } = useYoutubeRelatedVideos(videoItem?.id, 15);
 
-    if(videoIsLoading || relatedVideosIsLoading){
+    if (videoIsLoading || relatedVideosIsLoading) {
         return <LoadingIndicator role="progressbar" />
     }
 
@@ -27,17 +37,9 @@ function VideoDetails({ videoData, videoIsLoading, videoError, setVideoId }) {
 
     return (
         <VideoDetailsViewContainer>
-            <VideoPlayer
-                videoData={videoData}
-                videoIsLoading={videoIsLoading}
-                videoError={videoError}
-                setVideoId={setVideoId}
-            />
+            <VideoPlayer />
             <RelatedVideos
                 relatedVideosResult={relatedVideosResult}
-                relatedVideosIsLoading={relatedVideosIsLoading}
-                relatedVideosError={relatedVideosError}
-                setVideoId={setVideoId}
             />
         </VideoDetailsViewContainer>
     );

@@ -4,6 +4,12 @@ import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVid
 import Home from "../../views/Home";
 import VideoDetails from "../../views/VideDetails";
 import Header from "../Header";
+import globalReducer from "../../state/reducer";
+import { useReducer } from "react";
+import GlobalContext from "../../state/context";
+import { themes } from "../../state/themes";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from '../../globalStyle';
 
 function App() {
     const {
@@ -21,31 +27,38 @@ function App() {
         setVideoId
     } = useYoutubeVideo();
 
-    return (
-        <>
-            <Header
-                setSearchTerm={setSearchTerm}
-                setVideoId={setVideoId}
-            />
-            <main>
-                {videoId == null ? (
-                    <Home
-                        searchIsLoading={searchIsLoading}
-                        searchResult={searchResult}
-                        searchError={searchError}
-                        setVideoId={setVideoId}
-                    />
-                ) : (
-                    <VideoDetails
-                        videoData={videoData}
-                        videoIsLoading={videoIsLoading}
-                        videoError={videoError}
-                        setVideoId={setVideoId}
-                    />
-                )}
-            </main>
+    const [globalState, globalDispatch] = useReducer(globalReducer, { theme: themes.dark });
 
-        </>
+    return (
+        <GlobalContext.Provider value={{
+            globalState,
+            globalDispatch,
+            youtubeSearch: {
+                searchResult,
+                searchIsLoading,
+                searchError,
+                setSearchTerm
+            },
+            youtubeVideo: {
+                videoData,
+                videoIsLoading,
+                videoError,
+                videoId,
+                setVideoId
+            }
+        }}>
+            <ThemeProvider theme={globalState.theme}>
+                <GlobalStyle />
+                <Header />
+                <main>
+                    {!videoId ? (
+                        <Home />
+                    ) : (
+                        <VideoDetails />
+                    )}
+                </main>
+            </ThemeProvider>
+        </GlobalContext.Provider>
     );
 }
 

@@ -34,6 +34,29 @@ describe('useYoutubeSearch', () => {
         expect(axios.get).toBeCalledWith(moduleEndPoint, expectedQuery);
     });
 
+    describe('when no arguments are provided', () => {
+        test('should use the default parameters value', async () => {
+            axios.get = jest.fn().mockResolvedValue({ data: {} })
+
+            const defaultSearchTerm = 'wizeline';
+            const defaultMaxResults = 50;
+            const moduleEndPoint = 'https://www.googleapis.com/youtube/v3/search';
+            const expectedQuery = {
+                "params": {
+                    "key": process.env.REACT_APP_YOUTUBE_API_KEY,
+                    "maxResults": defaultMaxResults,
+                    "part": "snippet",
+                    "q": defaultSearchTerm,
+                    "type": "video"
+                }
+            }
+
+            await act(async () => renderHook(() => useYoutubeSearch()));
+
+            expect(axios.get).toBeCalledWith(moduleEndPoint, expectedQuery);
+        });
+    });
+
     describe('while fetching data', () => {
         test('handles loading state correctly', async () => {
             const { deferred, promise } = getControlledPromise();

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LoadingIndicator = styled.div`
     min-height: 5px;
-    background-color: #00B4D8;
+    background-color: ${props => props.theme.loadingIndicatorColor};
     animation-name: loading;
     animation-duration: 4s;
     animation-iteration-count: infinite;
@@ -13,14 +13,14 @@ export const LoadingIndicator = styled.div`
 
     @keyframes loading {
         0% {
-            left: -10%;
+            left: 0%;
             width: 0%;
         }
         50% {
             width: 30%;
         }
         100% {
-            left: 110%;
+            left: 100%;
             width: 0%;
         }
     }
@@ -29,7 +29,7 @@ export const LoadingIndicator = styled.div`
 export const ErrorContainer = styled.div`
     padding-top: 100px;
     padding: 100px 10px 10px 10px;
-    color: #03045E;
+    color: ${props => props.theme.fontColor};
     width: 100%;
     text-align: center;
 
@@ -38,11 +38,11 @@ export const ErrorContainer = styled.div`
     }
 
     h1 {
-        font: bold 28px 'Amatic SC', arial;
+        font: bold 28px ${props => props.theme.fontFam}, arial;
         margin-bottom: 30px;
     }
 
     p {
-        font: bold 20px 'Amatic SC', arial;
+        font: bold 20px ${props => props.theme.fontFam}, arial;
     }
 `;

@@ -13,8 +13,12 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: #E9ECEF;
-        overflow-x: hidden;
+        background-color: ${props => props.theme.body.backgroundColor};
+    }
+
+    ::placeholder {
+        opacity: 1;
+        color: ${props => props.theme.placeholderColor}
     }
 
     @media(max-width: 768px){
@@ -27,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
         .display-block-mobile{
             display: block;
         }
+    }
+
+    .custom-tooltip {
+        letter-spacing: 1px !important;
+        font-size: 18px !important;
     }
 `;
 

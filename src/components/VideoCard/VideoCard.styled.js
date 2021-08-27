@@ -10,18 +10,18 @@ export const VideoRelativeContiner = styled.div`
 export const VideoItemContainer = styled.div`    
     border-radius: 10px;
     overflow: hidden;
-    background-color: #f8f9fa;
-    font-family: 'Amatic SC', Arial;
+    background-color: ${props => props.theme.videoCards.backgroundColor};
+    font-family: ${props => props.theme.fontFam}, Arial;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
     cursor: pointer;
-    color: #03045E;
+    color: ${props => props.theme.fontColor};
     transition: background-color .3s ease-out, min-width .3s ease-out;
     min-height: 100%;
     min-width: 100%;
 
     @media(min-width: 768px){
         &:hover {
-            background-color: #e9ecef;
+            background-color: ${props => props.theme.videoCards.backgroundColorHover};
             position: absolute;
             z-index: 2;
             min-width: 105%;
@@ -37,8 +37,7 @@ export const VideoItemContainer = styled.div`
         }
 
         /*DescriptionContainer*/
-        &:hover > div:nth-of-type(3){
-            margin: 12px;
+        &:hover > .description-container{
             display: block;
         }
     }
@@ -51,6 +50,7 @@ export const VideoItemContainer = styled.div`
 
 export const ThumbnailContainer = styled.div`
     min-height: 185px;
+    background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
     background-image: url(${props => props.thumbnail});
     background-size: 110%;
     background-repeat: no-repeat;
@@ -59,18 +59,19 @@ export const ThumbnailContainer = styled.div`
 `;
 
 export const LoadingIndicator = styled.div`
-    background-color: #00B4D8;
+    background-color: ${props => props.theme.loadingIndicatorColor};
     width: 0px;
     height: 5px;
-    transition: width .8s ease-out;
+    transition: width .5s ease-out;
     border-radius: 10px;
 `;
 
 export const DescriptionContainer = styled.div`
     overflow: hidden;
     display: none;
-    animation: fade 2s ease-out .8s 1 normal forwards;
+    animation: fade 2s ease-out .5s 1 normal forwards;
     max-height: 0px;
+    margin: 12px;
 
     & > p {
         font-size: 16px;
@@ -89,6 +90,5 @@ export const DescriptionContainer = styled.div`
 
     @media(max-width: 768px){
         display: block;
-        margin: 12px;
     }
 `;
