@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
         .display-block-mobile{
             display: block;
         }
+
+        .full-opacity-mobile{
+            opacity: 1;
+        }
     }
 
     .custom-tooltip {

@@ -32,6 +32,7 @@ const RelatedVideo = ({ item }) => {
                     icon={faHeart}
                     size="1x"
                     data-tip="Add to favorites"
+                    className="full-opacity-mobile"
                 />
             </ThumbnailContainer>
             <TitleAndChannelContainer>

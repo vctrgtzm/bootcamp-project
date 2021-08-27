@@ -23,7 +23,11 @@ const VideoPlayer = ({ videoData }) => {
 
             <TitleAndFavButton>
                 <h2>{videoItem?.snippet?.title}</h2>
-                <FontAwesomeIcon icon={faHeart} size="lg" data-tip="Add to favorites" />
+                <FontAwesomeIcon
+                    icon={faHeart} size="lg"
+                    data-tip="Add to favorites"
+                    className="full-opacity-mobile"
+                />
                 <ReactTooltip
                     place="left"
                     className="custom-tooltip"

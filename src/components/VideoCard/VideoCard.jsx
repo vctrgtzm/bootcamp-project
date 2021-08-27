@@ -23,6 +23,7 @@ function VideoCard({ thumbnail, title, description, videoId, channelId }) {
                         icon={faHeart}
                         size="2x"
                         data-tip="Add to favorites"
+                        className="full-opacity-mobile"
                     />
                 </ThumbnailContainer>
                     <LoadingIndicator />

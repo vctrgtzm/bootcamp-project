@@ -14,9 +14,9 @@ export const RelatedVideosContainer = styled.div`
         display: none;
     }
 
-    @media(max-width: 768px){
+    @media(max-width: 1200px){
         flex-flow: column; 
-        padding: 10px;
+        padding: 0;
         padding-bottom: 20px;
         max-height: unset;
     }

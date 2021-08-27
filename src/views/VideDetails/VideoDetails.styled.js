@@ -6,7 +6,7 @@ export const VideoDetailsViewContainer = styled.div`
     min-height: 100vh;
     padding: 70px 0px 0px 30px;
 
-    @media(max-width: 768px){
+    @media(max-width: 1200px){
         flex-flow: column; 
         padding: 50px 10px 0px 10px;
     }
