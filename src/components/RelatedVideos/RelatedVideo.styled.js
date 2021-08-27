@@ -22,8 +22,9 @@ export const RelatedVideoContainer = styled(Link)`
         background-color: ${props => props.theme.videoCards.backgroundColorHover};
     }
 
-    &:hover > div {
-        background-size: 33vh;
+    /*FavButton*/
+    &:hover svg{
+        opacity: 1;
     }
 `;
 
@@ -31,13 +32,14 @@ export const ThumbnailContainer = styled.div`
     background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
     flex-basis: 40%;
     background-image: url(${props => props.thumbnail});
-    background-size: 30vh;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-size .3s ease-out;
-    `;
+    position: relative;
+`;
 
-    export const TitleAndChannelContainer = styled.div`
+export const TitleAndChannelContainer = styled.div`
     flex-basis: 60%;
 
     & > p {

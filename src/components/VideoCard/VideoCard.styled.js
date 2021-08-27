@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -42,6 +43,11 @@ export const VideoItemContainer = styled(Link)`
         &:hover > .description-container{
             display: block;
         }
+
+        /*FavButton*/
+        &:hover svg{
+            opacity: 1;
+        }
     }
 
     & > h2{
@@ -58,6 +64,21 @@ export const ThumbnailContainer = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     transition: background-size .3s ease-out;
+    position: relative;
+`;
+
+export const FavButton = styled(FontAwesomeIcon)`
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    color: #EF233C;
+    opacity: 0;
+    transition: color .2s ease-out,
+                opacity .3s ease-out;
+
+    &:hover{
+        color: #D90429;
+    }
 `;
 
 export const LoadingIndicator = styled.div`

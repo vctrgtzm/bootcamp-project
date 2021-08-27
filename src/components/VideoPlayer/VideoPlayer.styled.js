@@ -34,3 +34,24 @@ export const IFameContainer = styled.div`
         height: 100%;
     }
 `;
+
+export const TitleAndFavButton = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    & > h2{
+        margin: 12px 12px 0px 0px;
+    }
+
+    & > svg {
+        margin-top: 20px;
+        transition: color .2s ease-out;
+        color: #EF233C;
+        cursor: pointer;
+    }
+
+    & > svg:hover{
+        color: #D90429;
+    }
+
+`;

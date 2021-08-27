@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
     .custom-tooltip {
         letter-spacing: 1px !important;
         font-size: 18px !important;
+        border-radius: 10px !important;
     }
 `;
 

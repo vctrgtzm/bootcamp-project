@@ -1,6 +1,9 @@
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactTooltip from "react-tooltip";
 import { useYoutubeChannel } from "../../customHooks/useYoutubeChannel/useYoutubeChannel";
 import ChannelInfo from "../ChannelInfo/ChannelInfo";
-import { IFameContainer, VideoContainer, VideoDetailsContainer } from './VideoPlayer.styled';
+import { IFameContainer, TitleAndFavButton, VideoContainer, VideoDetailsContainer } from './VideoPlayer.styled';
 
 
 
@@ -17,7 +20,15 @@ const VideoPlayer = ({ videoData }) => {
             <VideoContainer>
                 <IFameContainer dangerouslySetInnerHTML={{ __html: videoItem?.player?.embedHtml }} />
             </VideoContainer>
-            <h2>{videoItem?.snippet?.title}</h2>
+
+            <TitleAndFavButton>
+                <h2>{videoItem?.snippet?.title}</h2>
+                <FontAwesomeIcon icon={faHeart} size="lg" data-tip="Add to favorites" />
+                <ReactTooltip
+                    place="left"
+                    className="custom-tooltip"
+                />
+            </TitleAndFavButton>
             {!channelIsLoading && !channelError && (
                 <ChannelInfo
                     thumbnail={

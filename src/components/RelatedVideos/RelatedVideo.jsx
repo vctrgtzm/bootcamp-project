@@ -1,5 +1,8 @@
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import ReactTooltip from "react-tooltip";
 import { useYoutubeChannel } from "../../customHooks/useYoutubeChannel/useYoutubeChannel";
 import ChannelInfo from "../ChannelInfo/ChannelInfo";
+import { FavButton } from "../VideoCard/VideoCard.styled";
 import { RelatedVideoContainer, ThumbnailContainer, TitleAndChannelContainer } from "./RelatedVideo.styled";
 
 const RelatedVideo = ({ item }) => {
@@ -20,7 +23,17 @@ const RelatedVideo = ({ item }) => {
                     item.snippet.thumbnails?.medium?.url ||
                     item.snippet.thumbnails?.default?.url
                 }
-            />
+            >
+                <ReactTooltip
+                    place="left"
+                    className="custom-tooltip"
+                />
+                <FavButton
+                    icon={faHeart}
+                    size="1x"
+                    data-tip="Add to favorites"
+                />
+            </ThumbnailContainer>
             <TitleAndChannelContainer>
                 <p>{item.snippet.title}</p>
                 {!channelIsLoading && !channelError && (
