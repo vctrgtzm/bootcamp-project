@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::placeholder {
-        opacity: 1;
+        opacity: .7;
         color: ${props => props.theme.placeholderColor}
     }
 
