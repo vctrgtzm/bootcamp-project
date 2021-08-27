@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const VideoDetailsContainer = styled.div`
@@ -18,28 +17,6 @@ export const VideoContainer = styled.div`
 
     &:hover > button {
         opacity: 1;
-    }
-`;
-
-export const BackToVideosButton = styled(Link)`
-    background-color: #00B4D8;
-    font: bold 20px ${props => props.theme.fontFam}, arial;
-    padding: 12px;
-    border: none;
-    color: #E9ECEF;
-    position: absolute;
-    right: 15px;
-    bottom: 60px;   
-    opacity: 0;
-    transition: opacity .3s ease-out, color .2s linear, background-color .2s linear;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 10px;
-    text-decoration: none;
-
-    &:hover{
-        color:white;
-        background-color: #0096C7;
     }
 `;
 
