@@ -11,6 +11,7 @@ import { RelatedVideoContainer, ThumbnailContainer, TitleAndChannelContainer } f
 
 const RelatedVideo = ({ item }) => {
     const [isInFavs, setIsInFavs] = useState(isInFavorites(item));
+    const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
     const {
         channelResult,
         channelIsLoading,
@@ -21,7 +22,9 @@ const RelatedVideo = ({ item }) => {
         ReactTooltip.rebuild();
     }, [isInFavs]);
 
-    const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
+    useEffect(() => {
+        setIsInFavs(isInFavorites(item));
+    }, [item, globalState.user]);    
 
     const handleAddToFav = (e, item) => {
         e.preventDefault();
@@ -42,7 +45,10 @@ const RelatedVideo = ({ item }) => {
 
     return (
         <RelatedVideoContainer
-            to={`/video/${item.id.videoId}`}
+            to={{
+                pathname: `/video/${item.id.videoId}`,
+                state: { watchingItem: item }
+            }}
             role="listitem"
         >
             <ThumbnailContainer

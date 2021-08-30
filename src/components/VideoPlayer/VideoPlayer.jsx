@@ -23,6 +23,10 @@ const VideoPlayer = ({ item, watchingItem }) => {
         ReactTooltip.rebuild();
     }, [isInFavs]);
 
+    useEffect(() => {
+        setIsInFavs(isInFavorites(watchingItem));
+    }, [watchingItem, globalState.user]);
+
 
     const handleAddToFav = (e, item) => {
         e.preventDefault();

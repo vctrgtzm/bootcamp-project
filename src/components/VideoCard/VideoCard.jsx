@@ -9,6 +9,7 @@ import { addToFavorites, isInFavorites, removeFromFavorites } from '../../helper
 import ReactTooltip from 'react-tooltip';
 function VideoCard({ thumbnail, title, description, videoId, channelId, item }) {
     const [isInFavs, setIsInFavs] = useState(isInFavorites(item));
+    const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
     const {
         channelResult,
         channelIsLoading,
@@ -22,9 +23,7 @@ function VideoCard({ thumbnail, title, description, videoId, channelId, item }) 
     //check if still in favs
     useEffect(() => {
         setIsInFavs(isInFavorites(item));
-    }, [item]);
-
-    const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
+    }, [item, globalState.user]);
 
     const handleAddToFav = (e, item) => {
         e.preventDefault();
