@@ -73,6 +73,7 @@ export const NavigationItem = styled(Link)`
     margin: 0 16px;
     transition: color .2s ease-out;
     text-decoration: none;
+    color: ${props => props.theme.fontColor};
 
     &:visited {
         color: ${props => props.theme.fontColor};

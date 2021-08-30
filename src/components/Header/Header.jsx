@@ -75,7 +75,7 @@ function Header() {
                     <Logo role="img" alt="the icon of the app" src={logo} />
                     <NavigationItems role="navigation" className="hidden-mobile">
                         <NavigationItem to="/" >Home</NavigationItem>
-                        {globalState.user && <NavigationItem>Favorites</NavigationItem>}
+                        {globalState.user && <NavigationItem to="/favorites" >Favorites</NavigationItem>}
                     </NavigationItems>
                     <MenuIconContainer className="display-block-mobile">
                         <FontAwesomeIcon icon={faBars} size="1x" />

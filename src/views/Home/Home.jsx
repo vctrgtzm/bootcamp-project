@@ -8,7 +8,8 @@ function Home() {
     const {
         youtubeSearch: {
             searchIsLoading,
-            searchError
+            searchError,
+            searchResult
         }
     } = useContext(GlobalContext);
 
@@ -29,7 +30,7 @@ function Home() {
     }
 
     return (
-        <VideoGrid />
+        <VideoGrid items={searchResult.items} />
     );
 }
 

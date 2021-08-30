@@ -12,6 +12,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginModal from '../LoginModal';
 import ReactTooltip from "react-tooltip";
 import actionTypes from "../../state/actionTypes";
+import Favorites from "../../views/Favorites/Favorites";
 
 function App() {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -61,6 +62,9 @@ function App() {
                         </Route>
                         <Route exact path="/video/:id">
                             <VideoDetails />
+                        </Route>
+                        <Route exact path="/favorites">
+                            <Favorites />
                         </Route>
                     </Switch>
                 </main>

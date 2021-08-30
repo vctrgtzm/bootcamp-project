@@ -1,16 +1,8 @@
-import { useContext } from "react";
-import GlobalContext from "../../state/context";
 import VideoCard from "../VideoCard";
 import { GridContainer } from "./VideoGrid.styled";
 
 
-function VideoGrid() {
-    const {
-        youtubeSearch: {
-            searchResult: { items }
-        }
-    } = useContext(GlobalContext);
-
+function VideoGrid({ items }) {
 
     return (
         <GridContainer>
