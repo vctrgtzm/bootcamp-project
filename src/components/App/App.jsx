@@ -1,6 +1,6 @@
 import { useYoutubeSearch } from "../../customHooks/useYoutubeSearch/useYoutubeSearch";
 import Home from "../../views/Home";
-import VideoDetails from "../../views/VideDetails";
+import VideoDetails from "../../views/VideoDetails";
 import Header from "../Header";
 import globalReducer from "../../state/reducer";
 import { useEffect, useReducer, useState } from "react";
