@@ -14,6 +14,12 @@ export const RelatedVideosContainer = styled.div`
         display: none;
     }
 
+    & > p {
+        font: bold 28px ${props => props.theme.fontFam}, arial;
+        text-align: center;
+        color: ${props => props.theme.fontColor};
+    }
+
     @media(max-width: 1200px){
         flex-flow: column; 
         padding: 0;

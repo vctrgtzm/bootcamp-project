@@ -9,7 +9,7 @@ import ChannelInfo from "../ChannelInfo/ChannelInfo";
 import { FavButton, FavButtonBlue } from "../VideoCard/VideoCard.styled";
 import { RelatedVideoContainer, ThumbnailContainer, TitleAndChannelContainer } from "./RelatedVideo.styled";
 
-const RelatedVideo = ({ item }) => {
+const RelatedVideo = ({ item, fromFavorites }) => {
     const { addToFavorites, removeFromFavorites, isInFavorites } = useFavorites(item);
     const [isInFavs, setIsInFavs] = useState(isInFavorites());
     const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
@@ -47,7 +47,7 @@ const RelatedVideo = ({ item }) => {
     return (
         <RelatedVideoContainer
             to={{
-                pathname: `/video/${item.id.videoId}`,
+                pathname: `/${fromFavorites ? 'favorites' : 'video'}/${item.id.videoId}`,
                 state: { watchingItem: item }
             }}
             role="listitem"

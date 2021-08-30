@@ -8,7 +8,7 @@ function Favorites() {
 
     return (
         favoriteVideos.length > 0 ? (
-            <VideoGrid items={favoriteVideos} />
+            <VideoGrid items={favoriteVideos} fromFavorites={true} />
         ) : (
             <ErrorContainer>
                 <h1>You don't have any favorite videos yet :(</h1>

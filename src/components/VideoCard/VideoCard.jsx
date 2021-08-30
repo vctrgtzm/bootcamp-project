@@ -8,7 +8,7 @@ import actionTypes from '../../state/actionTypes';
 import ReactTooltip from 'react-tooltip';
 import useFavorites from '../../customHooks/useFavorites/useFavorites';
 
-function VideoCard({ thumbnail, title, description, videoId, channelId, item }) {
+function VideoCard({ thumbnail, title, description, videoId, channelId, item, fromFavorites }) {
     const { addToFavorites, removeFromFavorites, isInFavorites } = useFavorites(item);
     const [isInFavs, setIsInFavs] = useState(isInFavorites(item));
     const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
@@ -49,7 +49,7 @@ function VideoCard({ thumbnail, title, description, videoId, channelId, item }) 
         <VideoRelativeContiner>
             <VideoItemContainer
                 to={{
-                    pathname: `/video/${videoId}`,
+                    pathname: `/${fromFavorites ? 'favorites' : 'video'}/${videoId}`,
                     state: { watchingItem: item }
                 }}
                 role="listitem"

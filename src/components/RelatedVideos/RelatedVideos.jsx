@@ -1,18 +1,23 @@
 import RelatedVideo from "./RelatedVideo";
 import { RelatedVideosContainer } from "./RelatedVideos.styled";
 
-const RelatedVideos = ({ relatedVideosResult }) => {    
+const RelatedVideos = ({ items, fromFavorites=false }) => {
 
     return (
         <RelatedVideosContainer>
-            {relatedVideosResult.items.filter(item => item.snippet !== undefined).map(item => { //filter results without snippet
+            {items.length > 0 ? (
+                items.filter(item => item.snippet !== undefined).map(item => { //filter results without snippet
                 return (
                     <RelatedVideo
                         key={item.id.videoId}
                         item={item}
+                        fromFavorites={fromFavorites}
                     />
                 );
-            })}
+            })
+            ) : (
+                <p>{`${fromFavorites ? 'Looks like there are not more favorite videos to show :(' : 'There are not related videos to show :('}`}</p>
+            )}
         </RelatedVideosContainer>
     );
 }

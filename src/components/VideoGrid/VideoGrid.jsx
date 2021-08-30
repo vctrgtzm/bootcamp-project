@@ -2,7 +2,7 @@ import VideoCard from "../VideoCard";
 import { GridContainer } from "./VideoGrid.styled";
 
 
-function VideoGrid({ items }) {
+function VideoGrid({ items, fromFavorites=false }) {
 
     return (
         <GridContainer>
@@ -16,6 +16,7 @@ function VideoGrid({ items }) {
                         videoId={item.id.videoId}
                         channelId={item.snippet.channelId}
                         item={item}
+                        fromFavorites={fromFavorites}
                     />
                 );
             })}
