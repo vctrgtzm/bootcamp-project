@@ -16,6 +16,7 @@ import Favorites from "../../views/Favorites/Favorites";
 import FavoriteDetails from "../../views/FavoriteDetails/FavoriteDetails";
 import RouteNotFound from "../RouteNotFound/RouteNotFound";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ErrorBoundary from "../ErrorBoundary";
 
 function App() {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -56,33 +57,35 @@ function App() {
     return (
         <GlobalContext.Provider value={globalContextValue}>
             <ThemeProvider theme={globalState.theme}>
-                <GlobalStyle />
-                <Header />
-                <main>
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route exact path="/video/:id">
-                            <VideoDetails />
-                        </Route>
-                        <PrivateRoute exact path="/favorites">
-                            <Favorites />
-                        </PrivateRoute>
-                        <PrivateRoute exact path="/favorites/:id">
-                            <FavoriteDetails />
-                        </PrivateRoute>
-                        <Route path="*">
-                            <RouteNotFound />
-                        </Route>
-                    </Switch>
-                </main>
-                <LoginModal show={showLoginModal} onClose={handleOnCloseModal} />
-                <ReactTooltip
-                    place="left"
-                    effect="solid"
-                    className="custom-tooltip"
-                />
+                <ErrorBoundary>
+                    <GlobalStyle />
+                    <Header />
+                    <main>
+                        <Switch>
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
+                            <Route exact path="/video/:id">
+                                <VideoDetails />
+                            </Route>
+                            <PrivateRoute exact path="/favorites">
+                                <Favorites />
+                            </PrivateRoute>
+                            <PrivateRoute exact path="/favorites/:id">
+                                <FavoriteDetails />
+                            </PrivateRoute>
+                            <Route path="*">
+                                <RouteNotFound />
+                            </Route>
+                        </Switch>
+                    </main>
+                    <LoginModal show={showLoginModal} onClose={handleOnCloseModal} />
+                    <ReactTooltip
+                        place="left"
+                        effect="solid"
+                        className="custom-tooltip"
+                    />
+                </ErrorBoundary>
             </ThemeProvider>
         </GlobalContext.Provider>
     );

@@ -6,7 +6,10 @@ function PrivateRoute({ path, children }) {
     const { globalState: { user } } = useContext(GlobalContext);
 
     if (!user) {
-        return <Redirect to="/" />
+        return <Redirect to={{
+            pathname: '/',
+            state: { showLogin: true }
+        }} />
     }
 
     return (
