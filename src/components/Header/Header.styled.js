@@ -86,7 +86,7 @@ export const SearchInput = styled.input.attrs({ type: 'text' })`
     padding: 4px 8px;
     color: ${props => props.theme.fontColor};
     width: 70%;
-    min-width: 200px;
+    min-width: 180px;
     transition: background-color .2s ease-out;
 
     &:focus{

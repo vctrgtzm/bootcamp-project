@@ -39,8 +39,8 @@ const GlobalStyle = createGlobalStyle`
 
     .custom-tooltip {
         letter-spacing: 1px !important;
-        font-size: 18px !important;
         border-radius: 10px !important;
+        font: bold 18px ${props => props.theme.fontFam}, arial !important;
     }
 `;
 

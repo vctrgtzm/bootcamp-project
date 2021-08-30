@@ -1,7 +1,8 @@
 import VideoGrid from '../../components/VideoGrid/VideoGrid';
 import { LoadingIndicator, ErrorContainer } from '../../components/App/App.styled';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import GlobalContext from '../../state/context';
+import ReactTooltip from 'react-tooltip';
 
 function Home() {
     const {
@@ -10,6 +11,10 @@ function Home() {
             searchError
         }
     } = useContext(GlobalContext);
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     if (searchIsLoading) {
         return <LoadingIndicator role="progressbar" />

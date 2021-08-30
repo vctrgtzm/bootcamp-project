@@ -5,6 +5,8 @@ import VideoPlayer from "../../components/VideoPlayer";
 import { useYoutubeRelatedVideos } from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
 import { VideoDetailsViewContainer } from "./VideoDetails.styled";
 import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVideo'
+import { useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 
 function VideoDetails() {
     const { id } = useParams();
@@ -19,6 +21,10 @@ function VideoDetails() {
         relatedVideosIsLoading,
         relatedVideosError,
     } = useYoutubeRelatedVideos(videoItem?.id, 15);
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     if (videoIsLoading || relatedVideosIsLoading) {
         return <LoadingIndicator role="progressbar" />

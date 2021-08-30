@@ -69,7 +69,7 @@ function Header() {
 
     return (
         <>
-            <StyledHeader role="banner" data-testid="header">
+            <StyledHeader role="banner" data-testid="header">                
                 <HeaderSectionLeft>
                     <Logo role="img" alt="the icon of the app" src={logo} />
                     <NavigationItems role="navigation" className="hidden-mobile">
@@ -77,7 +77,7 @@ function Header() {
                         <NavigationItem>Favorites</NavigationItem>
                     </NavigationItems>
                     <MenuIconContainer className="display-block-mobile">
-                        <FontAwesomeIcon icon={faBars} size="lg" />
+                        <FontAwesomeIcon icon={faBars} size="1x" />
                     </MenuIconContainer>
                 </HeaderSectionLeft>
                 <HeaderSectionCenter role="search">
@@ -99,10 +99,6 @@ function Header() {
                         onClick={handleToggleMouseClick}
                         data-tip={`Switch to ${globalState.theme === themes.dark ? 'light' : 'dark'} theme`}
                     >
-                        <ReactTooltip
-                            place="bottom"
-                            className="custom-tooltip"
-                        />
                         <ThemeToggle
                             icon={faAdjust}
                             size="sm"

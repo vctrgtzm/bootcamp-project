@@ -2,7 +2,6 @@ import { VideoItemContainer, ThumbnailContainer, VideoRelativeContiner, Descript
 import { useYoutubeChannel } from '../../customHooks/useYoutubeChannel/useYoutubeChannel'
 import ChannelInfo from '../ChannelInfo/ChannelInfo';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import ReactTooltip from 'react-tooltip';
 
 function VideoCard({ thumbnail, title, description, videoId, channelId }) {
     const {
@@ -15,10 +14,6 @@ function VideoCard({ thumbnail, title, description, videoId, channelId }) {
         <VideoRelativeContiner>
             <VideoItemContainer to={`/video/${videoId}`} role="listitem">
                 <ThumbnailContainer thumbnail={thumbnail}>
-                    <ReactTooltip
-                        place="left"
-                        className="custom-tooltip"
-                    />
                     <FavButton
                         icon={faHeart}
                         size="2x"

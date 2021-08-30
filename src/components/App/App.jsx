@@ -10,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from '../../globalStyle';
 import { Route, Switch } from "react-router-dom";
 import LoginModal from '../LoginModal';
+import ReactTooltip from "react-tooltip";
 
 function App() {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -49,8 +50,12 @@ function App() {
                         </Route>
                     </Switch>
                 </main>
-
                 <LoginModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
+                <ReactTooltip
+                    place="left"
+                    effect="solid"
+                    className="custom-tooltip"
+                />
             </ThemeProvider>
         </GlobalContext.Provider>
     );
