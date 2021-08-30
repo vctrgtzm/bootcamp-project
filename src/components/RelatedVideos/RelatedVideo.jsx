@@ -25,7 +25,7 @@ const RelatedVideo = ({ item, fromFavorites }) => {
 
     useEffect(() => {
         setIsInFavs(isInFavorites());
-    }, [isInFavorites, globalState.user.favoriteVideos]);
+    }, [isInFavorites, globalState.user?.favoriteVideos]);
 
     const handleAddToFav = (e, item) => {
         e.preventDefault();

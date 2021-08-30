@@ -26,7 +26,7 @@ function VideoCard({ thumbnail, title, description, videoId, channelId, item, fr
     //check if still in favs
     useEffect(() => {
         setIsInFavs(isInFavorites());
-    }, [isInFavorites, globalState.user.favoriteVideos]);
+    }, [isInFavorites, globalState.user?.favoriteVideos]);
 
     const handleAddToFav = (e, item) => {
         e.preventDefault();

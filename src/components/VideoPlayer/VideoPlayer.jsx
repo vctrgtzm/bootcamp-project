@@ -26,7 +26,7 @@ const VideoPlayer = ({ item, watchingItem }) => {
 
     useEffect(() => {
         setIsInFavs(isInFavorites());
-    }, [isInFavorites, globalState.user.favoriteVideos]);
+    }, [isInFavorites, globalState.user?.favoriteVideos]);
 
 
     const handleAddToFav = (e, item) => {

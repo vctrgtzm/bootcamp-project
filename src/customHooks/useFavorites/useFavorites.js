@@ -5,10 +5,12 @@ import GlobalContext from "../../state/context";
 export default function useFavorites(item) {
     const { globalState, globalDispatch } = useContext(GlobalContext);
     const { user } = globalState;
-    const { favoriteVideos } = user;
+    const { favoriteVideos } = user ?? [];
 
     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user));
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+        }
     });
 
     const addToFavorites = () => {
@@ -25,6 +27,7 @@ export default function useFavorites(item) {
     }
 
     const isInFavorites = () => {
+        if (!user) return false;
         const idx = favoriteVideos.findIndex(x => x.id.videoId === item.id.videoId);
         return idx > -1;
     }
