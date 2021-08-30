@@ -14,6 +14,7 @@ import ReactTooltip from "react-tooltip";
 import actionTypes from "../../state/actionTypes";
 import Favorites from "../../views/Favorites/Favorites";
 import FavoriteDetails from "../../views/FavoriteDetails/FavoriteDetails";
+import RouteNotFound from "../RouteNotFound/RouteNotFound";
 
 function App() {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -69,6 +70,9 @@ function App() {
                         </Route>
                         <Route exact path="/favorites/:id">
                             <FavoriteDetails />
+                        </Route>
+                        <Route path="*">
+                            <RouteNotFound />
                         </Route>
                     </Switch>
                 </main>
