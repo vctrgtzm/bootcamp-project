@@ -15,6 +15,7 @@ import actionTypes from "../../state/actionTypes";
 import Favorites from "../../views/Favorites/Favorites";
 import FavoriteDetails from "../../views/FavoriteDetails/FavoriteDetails";
 import RouteNotFound from "../RouteNotFound/RouteNotFound";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 function App() {
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -65,12 +66,12 @@ function App() {
                         <Route exact path="/video/:id">
                             <VideoDetails />
                         </Route>
-                        <Route exact path="/favorites">
+                        <PrivateRoute path="/favorites">
                             <Favorites />
-                        </Route>
-                        <Route exact path="/favorites/:id">
+                        </PrivateRoute>
+                        <PrivateRoute path="/favorites/:id">
                             <FavoriteDetails />
-                        </Route>
+                        </PrivateRoute>
                         <Route path="*">
                             <RouteNotFound />
                         </Route>
