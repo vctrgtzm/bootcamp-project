@@ -70,12 +70,12 @@ function Header() {
 
     return (
         <>
-            <StyledHeader role="banner" data-testid="header">                
+            <StyledHeader role="banner" data-testid="header">
                 <HeaderSectionLeft>
                     <Logo role="img" alt="the icon of the app" src={logo} />
                     <NavigationItems role="navigation" className="hidden-mobile">
-                        <NavigationItem>Home</NavigationItem>
-                        <NavigationItem>Favorites</NavigationItem>
+                        <NavigationItem to="/" >Home</NavigationItem>
+                        {globalState.user && <NavigationItem>Favorites</NavigationItem>}
                     </NavigationItems>
                     <MenuIconContainer className="display-block-mobile">
                         <FontAwesomeIcon icon={faBars} size="1x" />

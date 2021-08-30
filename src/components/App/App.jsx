@@ -56,10 +56,10 @@ function App() {
                 <Header />
                 <main>
                     <Switch>
-                        <Route path="/" exact>
+                        <Route exact path="/">
                             <Home />
                         </Route>
-                        <Route path="/video/:id">
+                        <Route exact path="/video/:id">
                             <VideoDetails />
                         </Route>
                     </Switch>

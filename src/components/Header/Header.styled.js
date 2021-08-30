@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
@@ -68,9 +69,14 @@ export const MenuIconContainer = styled.div`
     position: relative;
 `;
 
-export const NavigationItem = styled.div`
+export const NavigationItem = styled(Link)`
     margin: 0 16px;
     transition: color .2s ease-out;
+    text-decoration: none;
+
+    &:visited {
+        color: ${props => props.theme.fontColor};
+    }
 
     &:hover{
         color: ${props => props.theme.fontColorHover};
