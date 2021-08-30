@@ -66,10 +66,10 @@ function App() {
                         <Route exact path="/video/:id">
                             <VideoDetails />
                         </Route>
-                        <PrivateRoute path="/favorites">
+                        <PrivateRoute exact path="/favorites">
                             <Favorites />
                         </PrivateRoute>
-                        <PrivateRoute path="/favorites/:id">
+                        <PrivateRoute exact path="/favorites/:id">
                             <FavoriteDetails />
                         </PrivateRoute>
                         <Route path="*">

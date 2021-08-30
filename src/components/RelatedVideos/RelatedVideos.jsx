@@ -16,7 +16,7 @@ const RelatedVideos = ({ items, fromFavorites=false }) => {
                 );
             })
             ) : (
-                <p>{`${fromFavorites ? 'Looks like there are not more favorite videos to show :(' : 'There are not related videos to show :('}`}</p>
+                <p>{`${fromFavorites ? 'Looks like there are no more favorite videos to show :(' : 'There are not related videos to show :('}`}</p>
             )}
         </RelatedVideosContainer>
     );

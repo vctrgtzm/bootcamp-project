@@ -10,12 +10,10 @@ function PrivateRoute({ path, children }) {
     }
 
     return (
-        <Route exact path={path}>
+        <Route path={path}>
             {children}
         </Route>
     );
-
-
 }
 
 export default PrivateRoute;
