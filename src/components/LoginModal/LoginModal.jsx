@@ -19,6 +19,7 @@ function LoginModal({ show, onClose }) {
             globalDispatch({ type: actionTypes.USER_LOGIN, payload: user });
             setUser('');
             setPassword('');
+            localStorage.setItem("user", JSON.stringify(user));
             onClose();
         }).catch((error) => {
             setError(error);
