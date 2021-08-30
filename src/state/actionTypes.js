@@ -5,6 +5,7 @@ const actionTypes = {
     USER_LOGOUT: 'USER_LOGOUT',
     SET_PENDING_FAV: 'SET_PENDING_FAV',
     REMOVE_PENDING_FAV: 'REMOVE_PENDING_FAV',
+    UPDATE_FAVORITES: 'UPDATE_FAVORITES',
 };
 
 export default actionTypes;

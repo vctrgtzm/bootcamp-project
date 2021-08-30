@@ -5,9 +5,11 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useState } from 'react';
 import GlobalContext from '../../state/context';
 import actionTypes from '../../state/actionTypes';
-import { addToFavorites, isInFavorites, removeFromFavorites } from '../../helpers/favoritesManager';
 import ReactTooltip from 'react-tooltip';
+import useFavorites from '../../customHooks/useFavorites/useFavorites';
+
 function VideoCard({ thumbnail, title, description, videoId, channelId, item }) {
+    const { addToFavorites, removeFromFavorites, isInFavorites } = useFavorites(item);
     const [isInFavs, setIsInFavs] = useState(isInFavorites(item));
     const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
     const {
@@ -16,14 +18,15 @@ function VideoCard({ thumbnail, title, description, videoId, channelId, item }) 
         channelError
     } = useYoutubeChannel(channelId);
 
+
     useEffect(() => {
         ReactTooltip.rebuild();
     }, [isInFavs]);
 
     //check if still in favs
     useEffect(() => {
-        setIsInFavs(isInFavorites(item));
-    }, [item, globalState.user]);
+        setIsInFavs(isInFavorites());
+    }, [isInFavorites, globalState.user.favoriteVideos]);
 
     const handleAddToFav = (e, item) => {
         e.preventDefault();
@@ -31,14 +34,14 @@ function VideoCard({ thumbnail, title, description, videoId, channelId, item }) 
             setShowLoginModal(true);
             globalDispatch({ type: actionTypes.SET_PENDING_FAV, payload: item });
         } else {
-            addToFavorites(item);
+            addToFavorites();
             setIsInFavs(true);
         }
     }
 
     const handleRemoveFromFav = (e, item) => {
         e.preventDefault();
-        removeFromFavorites(item);
+        removeFromFavorites();
         setIsInFavs(false);
     }
 

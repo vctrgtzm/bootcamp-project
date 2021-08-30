@@ -13,6 +13,8 @@ export default function globalReducer(state, action) {
             return { ...state, pendingFav: action.payload };
         case actionTypes.REMOVE_PENDING_FAV:
             return { ...state, pendingFav: null };
+        case actionTypes.UPDATE_FAVORITES:
+            return { ...state, user: { favoriteVideos: action.payload, ...state.user } }
         default:
             return state;
     }
