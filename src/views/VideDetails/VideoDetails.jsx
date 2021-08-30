@@ -8,7 +8,7 @@ import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVid
 import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 
-function VideoDetails(props) {
+function VideoDetails() {
     const { id } = useParams();
     const location = useLocation();
     const { watchingItem } = location.state;
