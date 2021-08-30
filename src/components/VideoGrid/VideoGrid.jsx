@@ -23,6 +23,7 @@ function VideoGrid() {
                         description={item.snippet.description}
                         videoId={item.id.videoId}
                         channelId={item.snippet.channelId}
+                        item={item}
                     />
                 );
             })}

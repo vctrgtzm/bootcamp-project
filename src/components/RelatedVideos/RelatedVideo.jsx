@@ -1,15 +1,44 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useContext, useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
 import { useYoutubeChannel } from "../../customHooks/useYoutubeChannel/useYoutubeChannel";
+import { addToFavorites, isInFavorites, removeFromFavorites } from "../../helpers/favoritesManager";
+import actionTypes from "../../state/actionTypes";
+import GlobalContext from "../../state/context";
 import ChannelInfo from "../ChannelInfo/ChannelInfo";
-import { FavButton } from "../VideoCard/VideoCard.styled";
+import { FavButton, FavButtonBlue } from "../VideoCard/VideoCard.styled";
 import { RelatedVideoContainer, ThumbnailContainer, TitleAndChannelContainer } from "./RelatedVideo.styled";
 
 const RelatedVideo = ({ item }) => {
+    const [isInFavs, setIsInFavs] = useState(isInFavorites(item));
     const {
         channelResult,
         channelIsLoading,
         channelError
     } = useYoutubeChannel(item.snippet.channelId);
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    }, [isInFavs]);
+
+    const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
+
+    const handleAddToFav = (e, item) => {
+        e.preventDefault();
+        if (!globalState.user) {
+            setShowLoginModal(true);
+            globalDispatch({ type: actionTypes.SET_PENDING_FAV, payload: item });
+        } else {
+            addToFavorites(item);
+            setIsInFavs(true);
+        }
+    }
+
+    const handleRemoveFromFav = (e, item) => {
+        e.preventDefault();
+        removeFromFavorites(item);
+        setIsInFavs(false);
+    }
 
     return (
         <RelatedVideoContainer
@@ -22,13 +51,23 @@ const RelatedVideo = ({ item }) => {
                     item.snippet.thumbnails?.medium?.url ||
                     item.snippet.thumbnails?.default?.url
                 }
-            >               
-                <FavButton
-                    icon={faHeart}
-                    size="1x"
-                    data-tip="Add to favorites"
-                    className="full-opacity-mobile"
-                />
+            >
+                {isInFavs ? (
+                    <FavButtonBlue
+                        icon={faHeart}
+                        size="1x"
+                        data-tip="Remove from favorites"
+                        onClick={(e) => handleRemoveFromFav(e, item)}
+                    />
+                ) : (
+                    <FavButton
+                        icon={faHeart}
+                        size="1x"
+                        data-tip="Add to favorites"
+                        className="full-opacity-mobile"
+                        onClick={(e) => handleAddToFav(e, item)}
+                    />
+                )}
             </ThumbnailContainer>
             <TitleAndChannelContainer>
                 <p>{item.snippet.title}</p>

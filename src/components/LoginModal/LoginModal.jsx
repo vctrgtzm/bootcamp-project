@@ -11,15 +11,19 @@ function LoginModal({ show, onClose }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const { globalDispatch } = useContext(GlobalContext);
+    const { globalDispatch, globalState } = useContext(GlobalContext);
 
     const handleLoginClick = () => {
         setError(null);
         loginApi(user, password).then((user) => {
+            //add pending fav if exists
+            if(globalState.pendingFav){
+                user.favoriteVideos.push(globalState.pendingFav);
+            }
             globalDispatch({ type: actionTypes.USER_LOGIN, payload: user });
             setUser('');
             setPassword('');
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("user", JSON.stringify(user));            
             onClose();
         }).catch((error) => {
             setError(error);

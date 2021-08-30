@@ -9,6 +9,10 @@ export default function globalReducer(state, action) {
             return { ...state, user: action.payload };
         case actionTypes.USER_LOGOUT:
             return { ...state, user: null };
+        case actionTypes.SET_PENDING_FAV:
+            return { ...state, pendingFav: action.payload };
+        case actionTypes.REMOVE_PENDING_FAV:
+            return { ...state, pendingFav: null };
         default:
             return state;
     }

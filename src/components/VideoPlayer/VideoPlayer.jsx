@@ -1,32 +1,70 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext, useEffect, useState } from "react";
+import ReactTooltip from "react-tooltip";
 import { useYoutubeChannel } from "../../customHooks/useYoutubeChannel/useYoutubeChannel";
+import { addToFavorites, isInFavorites, removeFromFavorites } from "../../helpers/favoritesManager";
+import actionTypes from "../../state/actionTypes";
+import GlobalContext from "../../state/context";
 import ChannelInfo from "../ChannelInfo/ChannelInfo";
-import { IFameContainer, TitleAndFavButton, VideoContainer, VideoDetailsContainer } from './VideoPlayer.styled';
+import { FavButton, FavButtonBlue, IFameContainer, TitleAndFavButton, VideoContainer, VideoDetailsContainer } from './VideoPlayer.styled';
 
 
 
-const VideoPlayer = ({ videoData }) => {
-    const videoItem = videoData?.items[0];
+const VideoPlayer = ({ item, watchingItem }) => {
+    const { setShowLoginModal, globalState, globalDispatch } = useContext(GlobalContext);
+    const [isInFavs, setIsInFavs] = useState(isInFavorites(watchingItem));
     const {
         channelResult,
         channelIsLoading,
         channelError
-    } = useYoutubeChannel(videoItem?.snippet?.channelId);
+    } = useYoutubeChannel(item?.snippet?.channelId);
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    }, [isInFavs]);
+
+
+    const handleAddToFav = (e, item) => {
+        e.preventDefault();
+        if (!globalState.user) {
+            setShowLoginModal(true);
+            globalDispatch({ type: actionTypes.SET_PENDING_FAV, payload: item });
+        } else {
+            addToFavorites(item);
+            setIsInFavs(true);
+        }
+    }
+
+    const handleRemoveFromFav = (e, item) => {
+        e.preventDefault();
+        removeFromFavorites(item);
+        setIsInFavs(false);
+    }
 
     return (
         <VideoDetailsContainer>
             <VideoContainer>
-                <IFameContainer dangerouslySetInnerHTML={{ __html: videoItem?.player?.embedHtml }} />
+                <IFameContainer dangerouslySetInnerHTML={{ __html: item?.player?.embedHtml }} />
             </VideoContainer>
 
             <TitleAndFavButton>
-                <h2>{videoItem?.snippet?.title}</h2>
-                <FontAwesomeIcon
-                    icon={faHeart} size="lg"
-                    data-tip="Add to favorites"
-                    className="full-opacity-mobile"
-                />
+                <h2>{item?.snippet?.title}</h2>
+                {isInFavs ? (
+                    <FavButtonBlue
+                        icon={faHeart}
+                        size="2x"
+                        data-tip="Remove from favorites"
+                        onClick={(e) => handleRemoveFromFav(e, watchingItem)}
+                    />
+                ) : (
+                    <FavButton
+                        icon={faHeart}
+                        size="2x"
+                        data-tip="Add to favorites"
+                        className="full-opacity-mobile"
+                        onClick={(e) => handleAddToFav(e, watchingItem)}
+                    />
+                )}
             </TitleAndFavButton>
             {!channelIsLoading && !channelError && (
                 <ChannelInfo
@@ -40,7 +78,7 @@ const VideoPlayer = ({ videoData }) => {
                     style={{ marginLeft: '0px' }}
                 />
             )}
-            <p className="hidden-mobile">{videoItem?.snippet?.description}</p>
+            <p className="hidden-mobile">{item?.snippet?.description}</p>
         </VideoDetailsContainer>
     );
 

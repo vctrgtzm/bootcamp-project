@@ -31,7 +31,8 @@ export const RelatedVideoContainer = styled(Link)`
 export const ThumbnailContainer = styled.div`
     background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
     flex-basis: 40%;
-    background-image: url(${props => props.thumbnail});
+    background: linear-gradient(to left top, black, transparent 30%),
+                url(${props => props.thumbnail});
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const VideoDetailsContainer = styled.div`
@@ -42,16 +43,23 @@ export const TitleAndFavButton = styled.div`
     & > h2{
         margin: 12px 12px 0px 0px;
     }
+`;
 
-    & > svg {
-        margin-top: 20px;
-        transition: color .2s ease-out;
-        color: #EF233C;
-        cursor: pointer;
-    }
+export const FavButton = styled(FontAwesomeIcon)`
+    margin-top: 20px;
+    transition: color .2s ease-out;
+    color: #EF233C;
+    cursor: pointer;
 
-    & > svg:hover{
+    &:hover{
         color: #D90429;
     }
+`;
 
+export const FavButtonBlue = styled(FavButton)`
+    color: #48CAE4;
+
+    &:hover{
+        color: #00B4D8;
+    }
 `;

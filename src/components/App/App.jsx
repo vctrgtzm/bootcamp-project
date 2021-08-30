@@ -44,6 +44,11 @@ function App() {
         }
     }, [globalState]);
 
+    const handleOnCloseModal = () => {
+        globalDispatch({ type: actionTypes.REMOVE_PENDING_FAV });
+        setShowLoginModal(false);
+    }
+
     return (
         <GlobalContext.Provider value={globalContextValue}>
             <ThemeProvider theme={globalState.theme}>
@@ -59,7 +64,7 @@ function App() {
                         </Route>
                     </Switch>
                 </main>
-                <LoginModal show={showLoginModal} onClose={() => setShowLoginModal(false)} />
+                <LoginModal show={showLoginModal} onClose={handleOnCloseModal} />
                 <ReactTooltip
                     place="left"
                     effect="solid"

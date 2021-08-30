@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { ErrorContainer, LoadingIndicator } from "../../components/App/App.styled";
 import RelatedVideos from "../../components/RelatedVideos";
 import VideoPlayer from "../../components/VideoPlayer";
@@ -8,8 +8,10 @@ import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVid
 import { useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 
-function VideoDetails() {
+function VideoDetails(props) {
     const { id } = useParams();
+    const location = useLocation();
+    const { watchingItem } = location.state;
     const {
         videoData,
         videoIsLoading,
@@ -40,7 +42,7 @@ function VideoDetails() {
 
     return (
         <VideoDetailsViewContainer>
-            <VideoPlayer videoData={videoData} />
+            <VideoPlayer item={videoData?.items[0]} watchingItem={watchingItem} />
             <RelatedVideos
                 relatedVideosResult={relatedVideosResult}
             />

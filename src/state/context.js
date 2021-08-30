@@ -16,7 +16,9 @@ const GlobalContext = createContext({
         videoId: null,
         setVideoId: () => {}
     },
-    setShowLoginModal: () => {}
+    setShowLoginModal: () => {},
+    pendingFav: null,
+    watchingItem: null
 });
 
 export default GlobalContext;

@@ -59,7 +59,8 @@ export const VideoItemContainer = styled(Link)`
 export const ThumbnailContainer = styled.div`
     min-height: 185px;
     background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
-    background-image: url(${props => props.thumbnail});
+    background: linear-gradient(to left top, black, transparent 30%),
+                url(${props => props.thumbnail});
     background-size: 110%;
     background-repeat: no-repeat;
     background-position: center;
@@ -78,6 +79,15 @@ export const FavButton = styled(FontAwesomeIcon)`
 
     &:hover{
         color: #D90429;
+    }
+`;
+
+export const FavButtonBlue = styled(FavButton)`
+    color: #48CAE4;
+    opacity: 1;
+
+    &:hover{
+        color: #00B4D8;
     }
 `;
 
