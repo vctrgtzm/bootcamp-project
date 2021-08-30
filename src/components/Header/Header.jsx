@@ -22,7 +22,7 @@ import GlobalContext from '../../state/context';
 import actionTypes from '../../state/actionTypes';
 import ReactTooltip from 'react-tooltip';
 import { themes } from '../../state/themes';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Header() {
     const [searchVal, setSearchVal] = useState('');
@@ -72,7 +72,9 @@ function Header() {
         <>
             <StyledHeader role="banner" data-testid="header">
                 <HeaderSectionLeft>
-                    <Logo role="img" alt="the icon of the app" src={logo} />
+                    <Link to="/">
+                        <Logo role="img" alt="the icon of the app" src={logo} />
+                    </Link>
                     <NavigationItems role="navigation" className="hidden-mobile">
                         <NavigationItem to="/" >Home</NavigationItem>
                         {globalState.user && <NavigationItem to="/favorites" >Favorites</NavigationItem>}
