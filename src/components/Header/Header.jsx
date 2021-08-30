@@ -65,6 +65,7 @@ function Header() {
     const handleLogOut = () => {
         setShowLogout(prevState => !prevState);
         globalDispatch({ type: actionTypes.USER_LOGOUT });
+        localStorage.removeItem('user');
     }
 
     return (
