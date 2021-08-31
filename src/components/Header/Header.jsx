@@ -32,7 +32,8 @@ function Header() {
         youtubeSearch: { setSearchTerm },
         globalDispatch,
         globalState,
-        setShowLoginModal
+        setShowLoginModal,
+        setShowSideMenu
     } = useContext(GlobalContext);
 
     const handleKeyDown = (e) => {
@@ -80,7 +81,7 @@ function Header() {
                         {globalState.user && <NavigationItem to="/favorites" >Favorites</NavigationItem>}
                     </NavigationItems>
                     <MenuIconContainer className="display-block-mobile">
-                        <FontAwesomeIcon icon={faBars} size="1x" />
+                        <FontAwesomeIcon icon={faBars} size="1x" onClick={() => setShowSideMenu(true)} />
                     </MenuIconContainer>
                 </HeaderSectionLeft>
                 <HeaderSectionCenter role="search">

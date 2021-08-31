@@ -17,9 +17,11 @@ import FavoriteDetails from "../../views/FavoriteDetails/FavoriteDetails";
 import RouteNotFound from "../RouteNotFound/RouteNotFound";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorBoundary from "../ErrorBoundary";
+import SideMenu from "../SideMenu";
 
 function App() {
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSideMenu, setShowSideMenu] = useState(false);
     const {
         searchResult,
         searchIsLoading,
@@ -38,7 +40,8 @@ function App() {
             searchError,
             setSearchTerm
         },
-        setShowLoginModal
+        setShowLoginModal,
+        setShowSideMenu
     };
 
     useEffect(() => {
@@ -60,6 +63,7 @@ function App() {
                 <ErrorBoundary>
                     <GlobalStyle />
                     <Header />
+                    <SideMenu showSideMenu={showSideMenu} />
                     <main>
                         <Switch>
                             <Route exact path="/">

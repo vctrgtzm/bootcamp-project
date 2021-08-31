@@ -18,7 +18,8 @@ const GlobalContext = createContext({
     },
     setShowLoginModal: () => {},
     pendingFav: null,
-    watchingItem: null
+    watchingItem: null,
+    setShowSideMenu: () => {}
 });
 
 export default GlobalContext;
