@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const VideoRelativeContiner = styled.div`
@@ -7,7 +9,7 @@ export const VideoRelativeContiner = styled.div`
     justify-content: center;
 `;
 
-export const VideoItemContainer = styled.div`    
+export const VideoItemContainer = styled(Link)`
     border-radius: 10px;
     overflow: hidden;
     background-color: ${props => props.theme.videoCards.backgroundColor};
@@ -18,6 +20,7 @@ export const VideoItemContainer = styled.div`
     transition: background-color .3s ease-out, min-width .3s ease-out;
     min-height: 100%;
     min-width: 100%;
+    text-decoration: none;
 
     @media(min-width: 768px){
         &:hover {
@@ -40,6 +43,11 @@ export const VideoItemContainer = styled.div`
         &:hover > .description-container{
             display: block;
         }
+
+        /*FavButton*/
+        &:hover svg{
+            opacity: 1;
+        }
     }
 
     & > h2{
@@ -51,11 +59,36 @@ export const VideoItemContainer = styled.div`
 export const ThumbnailContainer = styled.div`
     min-height: 185px;
     background-color: ${props => props.theme.videoCards.thumbnailBackgroundColor};
-    background-image: url(${props => props.thumbnail});
+    background: linear-gradient(to left top, black, transparent 30%),
+                url(${props => props.thumbnail});
     background-size: 110%;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-size .3s ease-out;
+    position: relative;
+`;
+
+export const FavButton = styled(FontAwesomeIcon)`
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    color: #EF233C;
+    opacity: 0;
+    transition: color .2s ease-out,
+                opacity .3s ease-out;
+
+    &:hover{
+        color: #D90429;
+    }
+`;
+
+export const FavButtonBlue = styled(FavButton)`
+    color: #48CAE4;
+    opacity: 1;
+
+    &:hover{
+        color: #00B4D8;
+    }
 `;
 
 export const LoadingIndicator = styled.div`

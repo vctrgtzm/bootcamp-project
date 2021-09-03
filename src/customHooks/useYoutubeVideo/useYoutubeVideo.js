@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export function useYoutubeVideo() {
-    const [videoId, setVideoId] = useState(null);
+export function useYoutubeVideo(videoId) {
     const [videoIsLoading, setVideoIsLoading] = useState(true);
     const [videoError, setVideoError] = useState(null);
     const [videoData, setVideoData] = useState(null);
@@ -31,5 +30,5 @@ export function useYoutubeVideo() {
 
     }, [videoId]);
 
-    return { videoData, videoIsLoading, videoError, videoId, setVideoId };
+    return { videoData, videoIsLoading, videoError, videoId };
 }

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const VideoDetailsContainer = styled.div`
@@ -20,27 +21,6 @@ export const VideoContainer = styled.div`
     }
 `;
 
-export const BackToVideosButton = styled.button`
-    background-color: #00B4D8;
-    font: bold 20px ${props => props.theme.fontFam}, arial;
-    padding: 12px;
-    border: none;
-    color: #E9ECEF;
-    position: absolute;
-    right: 15px;
-    bottom: 60px;   
-    opacity: 0;
-    transition: opacity .3s ease-out, color .2s linear, background-color .2s linear;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 10px;
-
-    &:hover{
-        color:white;
-        background-color: #0096C7;
-    }
-`;
-
 export const IFameContainer = styled.div`
     height: 0;
     padding-bottom: 56.25%; /*youtybe videos aspect ratio */
@@ -53,5 +33,33 @@ export const IFameContainer = styled.div`
         position: absolute;
         width: 100%;
         height: 100%;
+    }
+`;
+
+export const TitleAndFavButton = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    & > h2{
+        margin: 12px 12px 0px 0px;
+    }
+`;
+
+export const FavButton = styled(FontAwesomeIcon)`
+    margin-top: 20px;
+    transition: color .2s ease-out;
+    color: #EF233C;
+    cursor: pointer;
+
+    &:hover{
+        color: #D90429;
+    }
+`;
+
+export const FavButtonBlue = styled(FavButton)`
+    color: #48CAE4;
+
+    &:hover{
+        color: #00B4D8;
     }
 `;

@@ -7,17 +7,23 @@ export const RelatedVideosContainer = styled.div`
     max-height: calc(100vh - 70px);
     overflow-y: scroll;    
     gap: 16px;
-    padding: 30px;
+    padding: 30px 0px 30px 30px;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
         display: none;
     }
 
-    @media(max-width: 768px){
+    & > p {
+        font: bold 28px ${props => props.theme.fontFam}, arial;
+        text-align: center;
+        color: ${props => props.theme.fontColor};
+    }
+
+    @media(max-width: 1200px){
         flex-flow: column; 
-        padding: 10px;
-        padding-bottom: 20px;
+        padding: 0;
+        padding-bottom: 10px;
         max-height: unset;
     }
 `;

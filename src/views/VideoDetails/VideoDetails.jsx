@@ -1,27 +1,32 @@
-import { useContext } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { ErrorContainer, LoadingIndicator } from "../../components/App/App.styled";
 import RelatedVideos from "../../components/RelatedVideos";
 import VideoPlayer from "../../components/VideoPlayer";
 import { useYoutubeRelatedVideos } from "../../customHooks/useYoutubeRelatedVideos/useYoutubeRelatedVideos";
-import GlobalContext from "../../state/context";
 import { VideoDetailsViewContainer } from "./VideoDetails.styled";
-
+import { useYoutubeVideo } from '../../customHooks/useYoutubeVideo/useYoutubeVideo'
+import { useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 
 function VideoDetails() {
+    const { id } = useParams();
+    const location = useLocation();
+    const { watchingItem } = location.state;
     const {
-        youtubeVideo: {
-            videoData,
-            videoIsLoading,
-            videoError
-        }
-    } = useContext(GlobalContext);
-
+        videoData,
+        videoIsLoading,
+        videoError
+    } = useYoutubeVideo(id);
     const videoItem = videoData?.items[0];
     const {
         relatedVideosResult,
         relatedVideosIsLoading,
         relatedVideosError,
     } = useYoutubeRelatedVideos(videoItem?.id, 15);
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     if (videoIsLoading || relatedVideosIsLoading) {
         return <LoadingIndicator role="progressbar" />
@@ -37,9 +42,9 @@ function VideoDetails() {
 
     return (
         <VideoDetailsViewContainer>
-            <VideoPlayer />
+            <VideoPlayer item={videoData?.items[0]} watchingItem={watchingItem} />
             <RelatedVideos
-                relatedVideosResult={relatedVideosResult}
+                items={relatedVideosResult.items}
             />
         </VideoDetailsViewContainer>
     );

@@ -1,5 +1,5 @@
 
-describe('VideoCard', () => {
+describe('VideoDetails', () => {
 
     test.todo('implement tests');
 });

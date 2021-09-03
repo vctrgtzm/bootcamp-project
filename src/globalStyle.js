@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::placeholder {
-        opacity: 1;
+        opacity: .7;
         color: ${props => props.theme.placeholderColor}
     }
 
@@ -31,11 +31,16 @@ const GlobalStyle = createGlobalStyle`
         .display-block-mobile{
             display: block;
         }
+
+        .full-opacity-mobile{
+            opacity: 1;
+        }
     }
 
     .custom-tooltip {
         letter-spacing: 1px !important;
-        font-size: 18px !important;
+        border-radius: 10px !important;
+        font: bold 18px ${props => props.theme.fontFam}, arial !important;
     }
 `;
 

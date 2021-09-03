@@ -1,17 +1,8 @@
-import { useContext } from "react";
-import GlobalContext from "../../state/context";
 import VideoCard from "../VideoCard";
 import { GridContainer } from "./VideoGrid.styled";
 
 
-function VideoGrid() {
-    const {
-        youtubeSearch: {
-            searchResult: { items }
-        },
-        youtubeVideo: { setVideoId }
-    } = useContext(GlobalContext);
-
+function VideoGrid({ items, fromFavorites=false }) {
 
     return (
         <GridContainer>
@@ -23,8 +14,9 @@ function VideoGrid() {
                         title={item.snippet.title}
                         description={item.snippet.description}
                         videoId={item.id.videoId}
-                        setVideoId={setVideoId}
                         channelId={item.snippet.channelId}
+                        item={item}
+                        fromFavorites={fromFavorites}
                     />
                 );
             })}

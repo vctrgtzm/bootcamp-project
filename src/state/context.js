@@ -15,7 +15,11 @@ const GlobalContext = createContext({
         videoError: null,
         videoId: null,
         setVideoId: () => {}
-    }
+    },
+    setShowLoginModal: () => {},
+    pendingFav: null,
+    watchingItem: null,
+    setShowSideMenu: () => {}
 });
 
 export default GlobalContext;
